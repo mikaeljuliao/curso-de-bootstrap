@@ -1,0 +1,106 @@
+<!--
+Aula 1 – Introdução ao Bootstrap 🚀
+
+O que é o Bootstrap?
+O Bootstrap é um framework front-end criado para facilitar o desenvolvimento de interfaces modernas e responsivas. Ele fornece um conjunto pronto de estilos CSS, componentes HTML e scripts em JavaScript, permitindo que desenvolvedores criem páginas mais rapidamente, sem precisar escrever tudo do zero.
+
+
+História e Origem:
+
+. O Bootstrap foi criado em 2011 por Mark Otto e Jacob Thornton, engenheiros do Twitter.
+. Inicialmente era chamado de Twitter Blueprint, pois foi desenvolvido para padronizar as ferramentas internas da empresa.
+. A ideia era acabar com a falta de consistência no design entre diferentes sistemas da empresa.
+. Com o sucesso interno, decidiram abrir o projeto para a comunidade, que cresceu rapidamente.
+. Hoje é um dos frameworks mais utilizados no mundo para desenvolvimento responsivo (sites que se adaptam a qualquer tela: celular, tablet, computador).
+
+
+
+Por que usar o Bootstrap?
+✔ Acelera o desenvolvimento (vários componentes prontos).
+✔ Sites responsivos de forma simples.
+✔ Grande comunidade e documentação clara.
+✔ Padrões modernos de design.
+
+
+
+Estrutura base do Bootstrap:
+O próprio Bootstrap disponibiliza um modelo inicial (esqueleto de página) já com os CDNs necessários.
+
+Exemplo de código base:
+<!doctype html>
+<html lang="en">
+  <head>
+    - Configurações básicas da página 
+    <meta charset="utf-8"> - Suporte a caracteres (acentos, cedilha, etc.) 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> - Responsividade 
+    <title>Bootstrap demo</title>
+
+    - Importando o CSS do Bootstrap via CDN 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    - Conteúdo da página 
+    <h1>Hello, world!</h1>
+
+    - Importando o JavaScript do Bootstrap via CDN 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+Explicação da Estrutura:
+. <!doctype html> → Define que o documento usa HTML5.
+. <html lang="en"> → Informa o idioma principal da página (pode trocar para "pt-br").
+. <meta charset="utf-8"> → Permite o uso de caracteres especiais como ç, ã, é, etc.
+. <meta name="viewport" content="width=device-width, initial-scale=1"> → Faz a página se adaptar ao tamanho da tela (essencial para responsividade).
+. <title> → Título que aparece na aba do navegador.
+. <link> → Importa o CSS do Bootstrap (estilização).
+. <h1>Hello, world!</h1> → Conteúdo de exemplo, que já será estilizado pelo Bootstrap.
+. <script> → Importa o JavaScript do Bootstrap (funcionalidades como dropdowns, modais, carrosséis, etc.).
+
+
+
+CDN do Bootstrap:
+A própria documentação do Bootstrap fornece os links oficiais para inclusão.
+
+🔗 CDN (Content Delivery Network) significa "Rede de Entrega de Conteúdo".
+Em vez de você baixar o Bootstrap e colocar os arquivos dentro do seu projeto, você usa esses links externos que carregam os arquivos diretamente dos servidores da biblioteca.
+
+Principais links:
+
+. CSS (estilo visual)
+https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css
+
+→ Responsável por toda a estilização (cores, botões, grids, tipografia, etc.).
+
+
+. JS (funcionalidades interativas)
+https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js
+
+→ Responsável pelos componentes interativos (dropdown, modal, carrossel, etc.).
+→ A versão bundle já inclui o Popper.js, necessário para alguns componentes do Bootstrap funcionarem.
+
+
+
+Preciso colocar em arquivos diferentes?
+. Não necessariamente. Você pode colocar tudo no mesmo arquivo HTML, como no exemplo do esqueleto.
+. Mas, em projetos maiores, é comum separar:
+  . Um arquivo HTML para o conteúdo.
+  . Um arquivo CSS próprio para estilos adicionais.
+  . Um arquivo JS próprio para scripts personalizados.
+-->
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

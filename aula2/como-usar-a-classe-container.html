@@ -1,0 +1,145 @@
+<!--
+Aula 2 – Containers no Bootstrap 📦
+
+O que é um Container?
+No Bootstrap, um container é uma caixa de organização usada para agrupar e alinhar os elementos dentro da página.
+Eles são essenciais para criar o layout de qualquer projeto, já que fornecem um limite visível e responsivo para o conteúdo.
+
+👉 Em resumo:
+. Um container centraliza e organiza os elementos.
+. Ele é responsivo por padrão: o conteúdo se adapta automaticamente ao tamanho da tela.
+. Funciona como a base estrutural do Bootstrap (todo o sistema de grid depende de containers).
+
+
+
+Tipos de Containers:
+
+O Bootstrap possui dois tipos principais de containers:
+
+
+1. Container fixo (.container)
+. Possui largura máxima pré-definida, que varia conforme o tamanho da tela.
+. Fica sempre centralizado, sobrando espaço (margens laterais) em telas grandes.
+. Ideal quando queremos que o conteúdo não ocupe toda a largura da tela.
+
+📌 Exemplo:
+
+<div class="container">
+  <h1>Teste container</h1>
+  <p>Este é um container fixo e centralizado.</p>
+</div>
+
+
+
+2. Container fluido (.container-fluid):
+. Sempre ocupa 100% da largura da área disponível.
+. Se adapta ao elemento pai (geralmente o <body>).
+. Ideal para quando queremos que o conteúdo ocupe toda a tela, sem margens laterais.
+
+📌 Exemplo:
+
+<div class="container-fluid">
+  <h1>Teste container</h1>
+  <p>Este é um container fluido que ocupa 100% da largura da tela.</p>
+</div>
+
+
+
+Responsividade do Container:
+. O container fixo já vem programado para quebrar o conteúdo em múltiplas linhas quando o espaço acabar.
+. Ao reduzir o tamanho da tela (ex.: celular), o conteúdo se adapta automaticamente, respeitando o conceito mobile first do Bootstrap.
+
+📌 Exemplo com texto longo:
+
+<div class="container">
+  <h1>Exemplo</h1>
+  <p>
+    Este container é fixo. O texto dentro dele vai quebrar automaticamente 
+    quando chegar ao limite da largura, se adaptando em diferentes telas.
+  </p>
+</div>
+
+
+
+Controle de Padding no Container:
+. O Bootstrap aplica padding (espaçamento interno) automaticamente no container fixo.
+. Esse espaçamento pode ser modificado com classes utilitárias:
+
+Classe                  	Significado
+p-0                     	Remove todo o padding
+pt-3	                    Padding-top (espaço no topo) com nível 3
+pb-5	                    Padding-bottom (espaço embaixo) com nível 5
+px-2	                    Padding apenas nas laterais (x = horizontal)
+py-4	                    Padding apenas em cima e embaixo (y = vertical)
+
+
+
+Containers fixos por breakpoint:
+O Bootstrap fornece variações de containers fixos que se adaptam ao tamanho da tela (breakpoints).
+
+📌 Tabela de referência:
+
+Classe	       <576px	≥576px	≥768px	≥992px	≥1200px	≥1400px
+.container-sm	100%	540px	720px	960px	1140px	1320px
+.container-md	100%	100%	720px	960px	1140px	1320px
+.container-lg	100%	100%	100%	960px	1140px	1320px
+.container-xl	100%	100%	100%	100%	1140px	1320px
+.container-xxl	100%	100%	100%	100%	100%	1320px
+Como interpretar essa tabela?
+
+. O container começa ocupando 100% da largura em telas pequenas (mobile first).
+. A partir de cada breakpoint, ele assume uma largura fixa máxima.
+
+. Exemplo:
+  . .container-sm: até 576px ocupa 100%, mas acima disso passa a ter largura fixa de 540px.
+  . .container-lg: ocupa 100% até 992px, mas a partir daí tem largura fixa de 960px.
+
+👉 Isso garante que o conteúdo fique bem organizado e legível, sem ocupar a tela inteira em dispositivos grandes.
+
+
+📌 Exemplo prático:
+<div class="container-sm">
+  <p>Container SM: em telas pequenas ocupa 100%, mas acima de 576px fica com largura fixa.</p>
+</div>
+
+<div class="container-lg">
+  <p>Container LG: em telas até 992px ocupa 100%, mas acima disso assume larguras fixas.</p>
+</div>
+
+
+Resumindo a diferença:
+. .container → largura fixa adaptável, sempre centralizado.
+. .container-fluid → ocupa 100% da largura.
+. .container-{breakpoint} → se adapta conforme a resolução da tela, alternando entre 100% e largura fixa.
+
+-->
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+     
+    <div class="container border border-red-300s">
+        <h1>Teste container</h1>
+        <p>Este container é fixo 
+       </p>
+    </div>
+     
+    <div class="container-fluid border bg-primary-2">
+        <h1>Teste container</h1>
+        <p>Este container é fixo 
+       </p>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
