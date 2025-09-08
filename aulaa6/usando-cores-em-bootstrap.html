@@ -1,0 +1,144 @@
+<!--
+
+.
+
+🎓 Aula 06 – Usando Cores no Bootstrap
+O Bootstrap vem com um sistema de cores utilitárias pronto, que serve para texto, fundo, bordas e elementos em geral. Isso facilita muito, já que não precisamos escrever CSS manual para aplicar cores básicas do projeto.
+
+1. Aplicando cor em texto:
+Para mudar a cor de um texto, usamos a classe:
+html:
+.text-nomeDaCor
+
+Exemplo:
+<p class="text-primary">Texto azul (primary)</p>
+<p class="text-success">Texto verde (success)</p>
+<p class="text-danger">Texto vermelho (danger)</p>
+
+
+
+2. Aplicando cor em fundos (background):
+Para mudar a cor de fundo de um elemento, usamos a classe:
+html:
+.bg-nomeDaCor
+
+Exemplo:
+<div class="p-3 mb-2 bg-primary text-white">Fundo azul</div>
+<div class="p-3 mb-2 bg-success text-white">Fundo verde</div>
+<div class="p-3 mb-2 bg-danger text-white">Fundo vermelho</div>
+
+
+📌 Dica importante:
+Sempre que usar fundo escuro, lembre-se de colocar um texto claro (.text-white) para manter a legibilidade.
+
+
+
+3. Cores predefinidas do Bootstrap:
+O Bootstrap já traz uma paleta de cores semânticas, que geralmente seguem esse padrão:
+. primary → Azul (cor principal do sistema)
+. secondary → Cinza médio (elementos secundários)
+. success → Verde (sucesso, confirmações)
+. danger → Vermelho (erro, alerta)
+. warning → Amarelo (atenção, alerta leve)
+. info → Azul claro/ciano (informações)
+. light → Cinza bem claro (fundos suaves)
+. dark → Cinza bem escuro (fundos fortes)
+. muted → Texto apagado (menos destaque)
+. white → Branco
+
+Exemplo completo em texto:
+
+<div class="container-fluid border border-primary p-3">
+    <p class="h3 text-muted">muted</p>
+    <p class="h3 text-primary">primary</p>
+    <p class="h3 text-secondary">secondary</p>
+    <p class="h3 text-success">success</p>
+    <p class="h3 text-info">info</p>
+    <p class="h3 text-warning">warning</p>
+    <p class="h3 text-danger">danger</p>
+    <p class="h3 text-white bg-dark">white</p>
+    <p class="h3 text-dark">dark</p>
+    <p class="h3 text-light bg-dark">light</p>
+</div>
+
+
+
+
+4. Combinação de cores (texto + fundo):
+Você pode misturar classes de cor de texto e fundo:
+
+<p class="bg-warning text-dark p-2">Aviso importante</p>
+<p class="bg-dark text-white p-2">Texto em fundo escuro</p>
+
+Isso garante contraste e acessibilidade.
+
+
+
+5. Bordas coloridas:
+Assim como texto e fundo, as bordas também podem receber cores com:
+html:
+.border-nomeDaCor
+
+Exemplo:
+<div class="border border-danger p-3">Borda vermelha</div>
+<div class="border border-success p-3">Borda verde</div>
+<div class="border border-primary p-3">Borda azul</div>
+
+
+
+6. Cores e contexto semântico:
+. Além de estética, as cores no Bootstrap têm significado (semântica):
+. Verde (success) → confirmação, operação bem-sucedida
+. Vermelho (danger) → erro, falha, alerta grave
+. Amarelo (warning) → atenção, cuidado
+. Azul (primary/info) → destaque principal ou informação
+➡️ Isso ajuda na padronização de design e UX.
+
+
+
+
+7. Extensão das cores (avançado):
+O Bootstrap 5 também possui shades adicionais (-50, -100, ..., -900) em sua versão com Sass, mas no CSS pronto só temos as classes principais.
+Se você personalizar o Bootstrap, pode ampliar ainda mais a paleta.
+
+
+
+✅ Resumo da Aula:
+. text-cor → aplica cor ao texto.
+. bg-cor → aplica cor ao fundo.
+. border-cor → aplica cor às bordas.
+. Cores principais: primary, secondary, success, danger, warning, info, light, dark, white, muted.
+. Importância de contraste e legibilidade.
+. Uso semântico das cores melhora acessibilidade e experiência do usuário.
+-->
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+     
+    <div class="container-fluid border border-primary p-3">
+        <p class="h3 text-muted">Multed</p>
+        <p class="h3 text-primary">primary</p>
+        <p class="h3 text-secondary">secondary</p>
+        <p class="h3 text-success bg-opacity-50">success</p>
+        <p class="h3 text-info">info</p>
+        <p class="h3 text-warning">warning</p>
+        <p class="h3 text-danger">danger</p>
+        <p class="h3 text-white">white</p>
+        <p class="h3 text-dark">dark</p>
+        <p class="h3 text-light">light</p>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

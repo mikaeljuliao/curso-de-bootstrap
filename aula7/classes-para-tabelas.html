@@ -1,0 +1,460 @@
+<!--
+
+🎓 Aula 07 – Classes para Tabelas em Bootstrap
+As tabelas no Bootstrap são estilizadas a partir da classe base .table e podem receber modificadores (striped, hover, bordered, variantes de cor, tamanho, tema escuro, responsividade, etc.). Você combina as classes conforme a necessidade.
+
+1) Estrutura básica (semântica + classe base):
+<table class="table">
+  <caption>Lista de usuários</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Ana</td>
+      <td>ana@email.com</td>
+      <td>Ativa</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Bruno</td>
+      <td>bruno@email.com</td>
+      <td>Pendente</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4" class="text-end">Total: 2 registros</td>
+    </tr>
+  </tfoot>
+</table>
+
+
+Boas práticas:
+. Use <caption> para descrever a tabela (acessibilidade).
+. Use scope="col" nos <th> do cabeçalho e scope="row" nos <th> da primeira coluna de cada linha (ajuda leitores de tela).
+. Separe semanticamente com <thead>, <tbody> e <tfoot>.
+
+
+
+
+2) Tamanhos e densidade:
+. .table → padrão.
+. .table-sm → tabela compacta (menos padding nas células).
+html:
+<table class="table table-sm"> ... </table>
+
+Quando usar: listas densas, páginas com muita informação.
+
+
+
+3) Bordas:
+. .table-bordered → bordas em todas as células.
+. .table-borderless → remove bordas.
+html:
+<table class="table table-bordered"> ... </table>
+<table class="table table-borderless"> ... </table>
+
+Dica: em layouts muito cheios, borderless deixa tudo mais “limpo”.
+
+
+
+
+4) Linhas listradas e highlight no hover:
+. .table-striped → listras alternadas por linha.
+. .table-striped-columns → listras por coluna (útil para tabelas muito largas).
+. .table-hover → realce ao passar o mouse.
+html:
+<table class="table table-striped table-hover"> ... </table>
+
+<table class="table table-striped-columns">
+  ...
+</table>
+
+Quando usar: melhora legibilidade e acompanhamento horizontal/vertical.
+
+
+
+5) Temas claro/escuro e cabeçalhos:
+
+. .table-dark → tema escuro da tabela (fundo escuro + texto claro).
+. Combine com variantes de cor (abaixo) com cuidado para manter o contraste.
+. .caption-top → coloca a legenda (caption) acima da tabela.
+html:
+<table class="table table-dark caption-top">
+  <caption>Relatório (tema escuro)</caption>
+  ...
+</table>
+
+
+
+
+6) Variantes de cor (contextuais):
+
+Você pode aplicar a linhas ou células para indicar estados:
+
+. .table-primary
+. .table-secondary
+. table-success
+. .table-danger
+. .table-warning
+. .table-info
+. .table-light
+. .table-dark
+. .table-active (destaque neutro)
+html:
+<table class="table">
+  <thead class="table-light">
+    <tr>
+      <th>Pedido</th>
+      <th>Cliente</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-success">
+      <td>#1023</td><td>Carla</td><td>Concluído</td>
+    </tr>
+    <tr class="table-warning">
+      <td>#1024</td><td>Diego</td><td>Aguardando</td>
+    </tr>
+    <tr>
+      <td>#1025</td><td>Eva</td><td class="table-danger">Cancelado</td>
+    </tr>
+  </tbody>
+</table>
+
+
+Uso semântico (UX):
+. success = ok/concluído
+. warning = atenção
+. danger = erro/cancelado
+. info = informação neutra
+. primary/secondary = destaque/apoio visual
+
+
+
+7) Divisores de grupos (seções no corpo):
+Crie separadores entre blocos de linhas com .table-group-divider no <tbody> (ou em múltiplos <tbody>):
+
+<table class="table">
+  <thead>
+    <tr><th>Equipe</th><th>Integrante</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Frontend</td><td>Ana</td></tr>
+    <tr><td>Frontend</td><td>Bruno</td></tr>
+  </tbody>
+  <tbody class="table-group-divider">
+    <tr><td>Backend</td><td>Carla</td></tr>
+    <tr><td>Backend</td><td>Diego</td></tr>
+  </tbody>
+</table>
+
+Útil para separar seções numa mesma tabela sem precisar de títulos intermediários.
+
+
+
+
+8) Responsividade (scroll horizontal sob certos breakpoints):
+Use um wrapper com .table-responsive ao redor da tabela.
+Versões com breakpoint: .table-responsive-sm|md|lg|xl|xxl.
+
+Como funciona: a tabela passa a ter rolagem horizontal abaixo do breakpoint indicado (em telas menores). Acima dele, volta ao normal.
+
+<div class="table-responsive"> - sempre scrollável quando precisar 
+  <table class="table table-striped"> ... </table>
+</div>
+
+<div class="table-responsive-md"> - rola horizontal abaixo de md 
+  <table class="table table-bordered"> ... </table>
+</div>
+
+
+Dicas:
+. Em tabelas muito largas (muitas colunas), sempre use .table-responsive.
+. Combine com utilitários como .text-nowrap para evitar quebra em colunas de códigos/IDs.
+
+
+
+
+9) Alinhamentos, espaçamento e truncamento nas células:
+. Alinhamento horizontal: .text-start, .text-center, .text-end.
+. Alinhamento vertical: aplique no <table> ou célula: .align-top, .align-middle, .align-bottom.
+. Quebra/Não quebra: .text-wrap, .text-nowrap, .text-break.
+. Truncar com reticências: combine largura + truncamento.
+html:
+<table class="table align-middle">
+  <thead>
+    <tr>
+      <th class="text-start">Produto</th>
+      <th class="text-center">Qtd</th>
+      <th class="text-end">Preço</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tênis</td>
+      <td class="text-center">2</td>
+      <td class="text-end">R$ 299,90</td>
+      <td class="w-25 text-truncate">Descrição grande que será cortada com reticências quando ultrapassar a largura da coluna.</td>
+    </tr>
+  </tbody>
+</table>
+
+Observação: para text-truncate funcionar, a célula precisa ter largura definida e overflow controlado (Bootstrap já cuida com a classe).
+
+
+
+10) Conteúdo rico dentro da tabela:
+Você pode inserir badges, botões, ícones, imagens e inputs nas células.
+Aproveite utilitários de espaçamento (.p-*, .m-*), tipografia e cores.
+
+<table class="table table-hover align-middle">
+  <thead class="table-light">
+    <tr>
+      <th>Usuário</th>
+      <th>Status</th>
+      <th class="text-end">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <img src="avatar1.jpg" class="rounded-circle me-2" width="32" height="32" alt="">
+        Ana
+      </td>
+      <td><span class="badge text-bg-success">Ativa</span></td>
+      <td class="text-end">
+        <button class="btn btn-sm btn-outline-primary">Ver</button>
+        <button class="btn btn-sm btn-outline-danger">Remover</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+11) Tabela “tema escuro” com cabeçalho claro (mix inteligente):
+<div class="table-responsive">
+  <table class="table table-dark table-striped table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Item</th>
+        <th>Categoria</th>
+        <th class="text-end">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mouse</td><td>Periférico</td><td class="text-end">R$ 89,90</td>
+      </tr>
+      <tr class="table-active">
+        <td>Teclado</td><td>Periférico</td><td class="text-end">R$ 199,00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Por que funciona: table-dark dá contraste forte no corpo, e thead.table-light mantém a leitura do cabeçalho excelente.
+
+
+
+12) Dicas de acessibilidade e UX:
+. Sempre use <caption> com um resumo claro.
+. Use scope correto em <th>.
+. Mantenha contraste suficiente (principalmente em table-dark e variantes).
+. Para seleções/edições, prefira linhas hover e foco visível (ex.: :focus-visible em botões dentro da célula).
+. Em telas pequenas, role horizontal com .table-responsive.
+
+
+
+
+13) Erros comuns a evitar:
+. Esquecer .table (você perde todo o estilo base).
+. Usar table-dark e pintar células com variantes que quebram o contraste.
+. Não envolver em .table-responsive tabelas largas (vai “estourar” o layout no mobile).
+. Não definir largura ao usar text-truncate (não vai truncar).
+
+
+
+
+14) Exemplo “combo” para prática:
+<div class="table-responsive-lg">
+  <table class="table table-sm table-striped table-hover table-bordered align-middle">
+    <caption class="caption-top">Inventário — atualizado hoje</caption>
+    <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" class="text-nowrap">Produto</th>
+        <th scope="col" class="text-center">Estoque</th>
+        <th scope="col" class="text-end">Preço</th>
+        <th scope="col" class="w-25">Observações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-success">
+        <th scope="row">1</th>
+        <td>HD 1TB</td>
+        <td class="text-center">34</td>
+        <td class="text-end">R$ 279,90</td>
+        <td class="text-truncate">Entrega rápida; embalagem reforçada; garantia de 12 meses.</td>
+      </tr>
+      <tr class="table-warning">
+        <th scope="row">2</th>
+        <td>SSD 512GB</td>
+        <td class="text-center">8</td>
+        <td class="text-end">R$ 349,90</td>
+        <td class="text-truncate">Estoque baixo, previsão de reposição em 5 dias úteis.</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Memória 16GB</td>
+        <td class="text-center">0</td>
+        <td class="text-end">R$ 399,90</td>
+        <td class="table-danger">Sem estoque — priorizar compra</td>
+      </tr>
+    </tbody>
+    <tfoot class="table-light">
+      <tr>
+        <td colspan="5" class="text-end">Última atualização: 12:30</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+
+
+
+
+15) Quando usar o quê (guia rápido):
+. Listas simples e legíveis: .table table-striped
+. Densidade alta: ... table-sm
+. Realce de status: variantes table-success|warning|danger|info
+. Muitas colunas: wrapper .table-responsive(-breakpoint) e, se ajudar, .table-striped-columns
+. Tema escuro: table-dark + thead.table-light (ou thead normal com bom contraste)
+. Separar grupos: múltiplos <tbody> + .table-group-divider
+
+
+
+-->
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+     
+    <div class="container-fluid border border-primary p-3">
+<div class="table-responsive-lg">
+  <table class="table table-sm table-striped table-hover table-bordered align-middle">
+    <caption class="caption-top">Inventário — atualizado hoje</caption>
+    <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" class="text-nowrap">Produto</th>
+        <th scope="col" class="text-center">Estoque</th>
+        <th scope="col" class="text-end">Preço</th>
+        <th scope="col" class="w-25">Observações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-success">
+        <th scope="row">1</th>
+        <td>HD 1TB</td>
+        <td class="text-center">34</td>
+        <td class="text-end">R$ 279,90</td>
+        <td class="text-truncate">Entrega rápida; embalagem reforçada; garantia de 12 meses.</td>
+      </tr>
+      <tr class="table-warning">
+        <th scope="row">2</th>
+        <td>SSD 512GB</td>
+        <td class="text-center">8</td>
+        <td class="text-end">R$ 349,90</td>
+        <td class="text-truncate">Estoque baixo, previsão de reposição em 5 dias úteis.</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Memória 16GB</td>
+        <td class="text-center">0</td>
+        <td class="text-end">R$ 399,90</td>
+        <td class="table-danger">Sem estoque — priorizar compra</td>
+      </tr>
+    </tbody>
+    <tfoot class="table-light">
+      <tr>
+        <td colspan="5" class="text-end">Última atualização: 12:30</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+   
+
+
+
+<table class="table table-responsive table-hover align-middle">
+  <thead class="table-light">
+    <tr>
+      <th>Usuário</th>
+      <th>Status</th>
+      <th class="text-end">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <img src="avatar1.jpg" class="rounded-circle me-2" width="32" height="32" alt="">
+        Ana
+      </td>
+      <td><span class="badge text-bg-success">Ativa</span></td>
+      <td class="text-end">
+        <button class="btn btn-sm btn-outline-primary">Ver</button>
+        <button class="btn btn-sm btn-outline-danger">Remover</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<div class="table-responsive">
+  <table class="table table-dark table-striped table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Item</th>
+        <th>Categoria</th>
+        <th class="text-end">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mouse</td><td>Periférico</td><td class="text-end">R$ 89,90</td>
+      </tr>
+      <tr class="table-active">
+        <td>Teclado</td><td>Periférico</td><td class="text-end">R$ 199,00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!--
+🎓 Aula 05 – Tipografia no Bootstrap
+A tipografia é um dos pontos mais importantes do design de uma página, porque texto é a principal forma de comunicação em sites e sistemas. O Bootstrap já traz classes utilitárias prontas que ajudam a padronizar títulos, parágrafos, alinhamentos e estilos de texto sem precisar escrever CSS manualmente.
+
+
+1. Títulos no Bootstrap:
+Existem duas formas principais de trabalhar com títulos:
+
+🔹 Usando tags HTML nativas:
+<h1>Título 1</h1>
+<h2>Título 2</h2>
+<h3>Título 3</h3>
+<h4>Título 4</h4>
+<h5>Título 5</h5>
+<h6>Título 6</h6>
+
+➡️ Aqui, cada tag tem um peso semântico diferente. O <h1> é mais importante (SEO, acessibilidade), enquanto <h6> é o menos relevante.
+
+
+🔹 Usando classes do Bootstrap (.h1, .h2 etc.):
+<p class="h1">Título 1</p>
+<p class="h2">Título 2</p>
+<p class="h3">Título 3</p>
+<p class="h6">Título 6</p>
+
+➡️ Isso permite transformar qualquer tag em um título visual, sem alterar a hierarquia semântica da página. Por exemplo, um <p> pode parecer um <h1>.
+
+
+
+2. Display headings:
+O Bootstrap oferece a classe display-1 até display-6, que cria títulos ainda maiores e mais chamativos do que os <h1>...<h6> tradicionais.
+
+<h1 class="display-1">Display 1</h1>
+<h1 class="display-2">Display 2</h1>
+<h1 class="display-3">Display 3</h1>
+<h1 class="display-4">Display 4</h1>
+
+
+📌 Diferença:
+. h1 até h6 seguem uma hierarquia semântica e de estilo.
+. display-1 até display-6 são exclusivamente estéticos, para dar ênfase visual.
+
+➡️ Uso comum: hero sections, títulos de destaque, chamadas de marketing.
+
+
+
+3. Small text (texto secundário):
+A tag <small> ou a classe .small deixa o texto menor e menos destacado.
+
+Exemplo com tag:
+<h1>Título principal <small>texto secundário</small></h1>
+
+Exemplo com classe:
+<p class="small">Esse é um texto pequeno</p>
+
+➡️ Dica: se você quiser reduzir apenas uma palavra, pode usar <span> com classe:
+
+<h2>Promoção <span class="small">apenas hoje</span></h2>
+
+📌 Uso comum: descrições, subtítulos, disclaimers.
+
+
+
+4. Abreviações (abbr):
+O Bootstrap estiliza a tag <abbr> para deixar claro que é uma abreviação. Pode ter o atributo title para exibir o significado ao passar o mouse.
+
+<p>Estamos estudando <abbr title="Bootstrap">BS</abbr>.</p>
+
+➡️ Isso melhora acessibilidade e usabilidade, pois o usuário entende o que aquela sigla significa.
+
+
+
+5. Transformações de texto:
+
+Bootstrap tem classes para modificar o estilo de capitalização sem precisar escrever CSS:
+. .text-lowercase → deixa tudo minúsculo
+. .text-uppercase → deixa tudo MAIÚSCULO
+. .text-capitalize → coloca a primeira letra de cada palavra em maiúscula
+html:
+<p class="text-lowercase">BOOTSTRAP</p>
+<p class="text-uppercase">bootstrap</p>
+<p class="text-capitalize">bootstrap framework</p>
+
+
+
+6. Alinhamento de texto:
+Com as classes de alinhamento, podemos organizar o texto facilmente:
+. .text-start → alinhado à esquerda (default)
+. .text-center → centralizado
+. .text-end → alinhado à direita
+html:
+<p class="text-start">Alinhado à esquerda</p>
+<p class="text-center">Centralizado</p>
+<p class="text-end">Alinhado à direita</p>
+
+📌 Responsivo: você pode alinhar dependendo do tamanho da tela:
+. .text-sm-center (a partir do mobile)
+. .text-md-end (a partir do tablet)
+. .text-lg-start (a partir do desktop)
+
+
+
+
+7. Quebra e não-quebra de texto:
+
+Controle do comportamento do texto dentro de containers:
+. .text-wrap → permite que o texto quebre em várias linhas.
+. .text-nowrap → impede a quebra, mantendo o texto em linha única.
+. .text-break → força a quebra de palavras muito longas, evitando overflow.
+
+Exemplo:
+<p class="text-nowrap">Este texto não vai quebrar em várias linhas.</p>
+<p class="text-break">PalavraMuitoGrandeSemEspaçoQueVaiQuebrar</p>
+
+
+
+
+8. Outros utilitários importantes:
+. .fw-bold → deixa em negrito
+. .fw-light → texto mais fino
+. .fst-italic → texto em itálico
+. .lh-1, .lh-sm, .lh-base, .lh-lg → controla a altura da linha (line-height).
+. .text-muted → texto menos destacado, como “cinza”.
+
+Exemplo:
+<p class="fw-bold">Texto em negrito</p>
+<p class="fst-italic">Texto em itálico</p>
+<p class="text-muted">Texto com menos destaque</p>
+
+✅ Resumo da Aula
+. Títulos: tags <h1>...<h6> (semântica) × classes .h1....h6 (estética).
+. Display headings: títulos ainda maiores, para destaque visual.
+. Small: reduz o tamanho do texto (subtítulos, descrições).
+. Abbr: estiliza abreviações e mostra significado ao passar o mouse.
+. Transformações: lowercase, uppercase, capitalize.
+. Alinhamento: start, center, end + responsivo.
+. Quebra de texto: wrap, nowrap, break.
+. Extras: peso da fonte, itálico, texto apagado, line-height.
+
+-->
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+     
+    <div class="container-fluid border border-primary p-3">
+
+        <h1>Titul 1</h1>
+        <h2>Titul 1</h1>
+        <h3>Titul 1</h1>
+        <h4>Titul 1</h1>
+
+        <p class="h1">Titulo 1</p>
+        <p class="h2">Titulo 1</p>      
+        <p class="h3">Titulo 1</p>   
+        <p class="h6">Titulo 1</p>   
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

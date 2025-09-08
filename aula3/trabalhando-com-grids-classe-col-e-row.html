@@ -1,0 +1,182 @@
+<!--
+aula3: Trabalhando com GRIDS Bootstrap, classes col e row [grid Bootstrap] 
+
+
+O que é o Grid System?
+
+O sistema de grid do Bootstrap é a base para criar layouts responsivos.
+Ele divide a página em uma estrutura de linhas (row) e colunas (col), funcionando de forma semelhante a uma tabela invisível que organiza o conteúdo.
+
+👉 Conceitos importantes:
+
+. Cada linha (row) tem 12 colunas disponíveis.
+. Podemos dividir essas 12 colunas de várias formas (ex.: col-6 col-6 = 6 + 6 = 12).
+. As colunas são responsivas, ou seja, se adaptam automaticamente ao tamanho da tela.
+. O grid usa flexbox por baixo dos panos.
+
+
+
+Estrutura básica do Grid:
+
+Para usar o grid, precisamos de três níveis principais:
+1. Container (container ou container-fluid) → delimita o layout.
+2. Linha (row) → agrupa colunas em uma linha.
+3. Coluna (col) → define os elementos dentro da linha.
+
+📌 Exemplo básico:
+
+<div class="container">
+  <div class="row border">
+    <div class="border col">Coluna 1</div>
+    <div class="border col">Coluna 2</div>
+    <div class="border col">Coluna 3</div>
+  </div>
+</div>
+
+
+👉 Resultado: uma linha (row) com 3 colunas (col), cada uma ocupando 1/3 do espaço disponível.
+
+
+
+Colunas automáticas (.col):
+. Se usamos apenas .col, todas as colunas se dividem igualmente dentro da linha.
+. Se tiver 2 colunas → cada uma ocupa 50%.
+. Se tiver 4 colunas → cada uma ocupa 25%.
+
+📌 Exemplo:
+
+<div class="row">
+  <div class="col">Col 1</div>
+  <div class="col">Col 2</div>
+  <div class="col">Col 3</div>
+  <div class="col">Col 4</div>
+</div>
+
+👉 Cada coluna vai ocupar 25% do espaço da linha.
+
+
+
+
+Colunas com largura fixa (.col-n):
+
+Podemos definir colunas com tamanhos específicos.
+. O número vai de 1 a 12 (porque cada linha tem 12 colunas).
+. col-1 ocupa 1/12 do espaço (~8,33%).
+. col-6 ocupa metade da linha (6/12 = 50%).
+. col-12 ocupa 100% da linha.
+
+📌 Exemplo:
+
+<div class="row">
+  <div class="col-3">Coluna 1 (3/12)</div>
+  <div class="col-6">Coluna 2 (6/12)</div>
+  <div class="col-3">Coluna 3 (3/12)</div>
+</div>
+
+
+👉 Soma = 3 + 6 + 3 = 12 → a linha fica preenchida corretamente.
+
+⚠️ Importante: se a soma ultrapassar 12, as colunas excedentes quebram para a linha de baixo.
+
+
+
+
+Colunas responsivas com breakpoints:
+O Bootstrap permite definir tamanhos de colunas dependendo da tela (mobile, tablet, desktop, etc).
+
+📌 Breakpoints disponíveis:
+. col-sm-* → telas ≥ 576px
+. col-md-* → telas ≥ 768px
+. col-lg-* → telas ≥ 992px
+. col-xl-* → telas ≥ 1200px
+. col-xxl-* → telas ≥ 1400px
+
+📌 Exemplo:
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-4">Coluna 1</div>
+  <div class="col-sm-12 col-md-6 col-lg-4">Coluna 2</div>
+  <div class="col-sm-12 col-md-12 col-lg-4">Coluna 3</div>
+</div>
+
+
+
+👉 Explicação:
+. Em telas pequenas (sm) → cada coluna ocupa 12 (100%), ou seja, ficam uma embaixo da outra.
+. Em telas médias (md) → cada coluna ocupa 6 (metade), ficando duas por linha.
+. Em telas grandes (lg) → cada coluna ocupa 4 (1/3 da linha), ficando três lado a lado.
+
+
+
+
+Misturando colunas fixas e automáticas:
+É possível usar col (automática) junto com col-n (fixa).
+
+📌 Exemplo:
+
+<div class="row">
+  <div class="col">Coluna 1 (automática)</div>
+  <div class="col-2">Coluna 2 (fixa: 2/12)</div>
+  <div class="col">Coluna 3 (automática)</div>
+</div>
+
+👉 O Bootstrap distribui o espaço restante entre as colunas automáticas.
+
+
+
+Regra essencial: usar sempre row:
+⚠️ Se você não colocar a classe row no container pai, as colunas (col) não funcionarão corretamente.
+Isso porque o .row aplica o display flex e o sistema de grid.
+
+
+
+O comportamento ao exceder 12 colunas:
+Se você colocar mais de 12 colunas dentro de uma mesma linha, o Bootstrap quebra automaticamente para uma nova linha.
+
+📌 Exemplo:
+
+<div class="row">
+  <div class="col-8">Coluna maior</div>
+  <div class="col-6">Coluna extra (vai pular pra linha de baixo)</div>
+</div>
+
+
+
+Resumindo o Grid do Bootstrap
+1. Toda estrutura começa com container > row > col.
+2. Cada linha tem 12 colunas no total.
+3. col divide o espaço igualmente.
+4. col-n ocupa um número fixo de colunas.
+5. col-{breakpoint}-n permite controlar o comportamento em diferentes telas.
+6. Se ultrapassar 12 colunas, o conteúdo vai automaticamente para a linha seguinte.
+-->
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+     
+    <div class="container border border-red-300s">
+        <h1>Teste container</h1>
+        <p>Este container é fixo 
+       </p>
+    </div>
+     <div class="row">
+  <div class="col border">Coluna 1 (automática)</div>
+  <div class="col-2 border">Coluna 2 (fixa: 2/12)</div>
+  <div class="col border">Coluna 3 (automática)</div>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
