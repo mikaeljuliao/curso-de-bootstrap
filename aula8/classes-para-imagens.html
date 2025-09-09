@@ -1,0 +1,163 @@
+<!--
+
+Aula 8 – Classes para Imagens no Bootstrap 🖼️
+
+Introdução:
+As imagens são parte fundamental de qualquer site.
+O Bootstrap fornece classes prontas para:
+. Tornar imagens responsivas (adaptam ao tamanho da tela).
+. Aplicar bordas arredondadas.
+. Adicionar miniaturas (thumbnails).
+. Centralizar imagens.
+. Criar figuras com legendas.
+
+👉 Isso ajuda a evitar que imagens quebrem o layout ou fiquem desproporcionais.
+
+
+
+Tornando imagens responsivas:
+.img-fluid:
+. Classe usada para fazer a imagem se adaptar automaticamente ao tamanho do container.
+. Usa max-width: 100%; height: auto;.
+. Evita que a imagem ultrapasse o espaço disponível.
+
+📌 Exemplo:
+<img src="img/exemplo.jpg" class="img-fluid" alt="Imagem responsiva">
+
+👉 Resultado:
+. A imagem nunca passa da largura do container.
+. Mantém a proporção original.
+
+
+
+Imagens arredondadas:
+- .rounded
+. Aplica cantos arredondados na imagem.
+-  .rounded-circle
+. Transforma a imagem em um círculo (ótimo para avatars ou fotos de perfil).
+- .rounded-pill
+. Deixa a imagem em formato de cápsula (bordas totalmente arredondadas).
+
+📌 Exemplos:
+<img src="foto.jpg" class="rounded" alt="Arredondada">
+<img src="foto.jpg" class="rounded-circle" alt="Círculo">
+<img src="foto.jpg" class="rounded-pill" alt="Cápsula">
+
+
+
+Miniaturas de imagens:
+- .img-thumbnail
+. Aplica um borda arredondada com padding e borda fina.
+. Dá um aspecto de miniatura de galeria.
+
+📌 Exemplo:
+<img src="foto.jpg" class="img-thumbnail" alt="Miniatura">
+
+
+
+
+Alinhamento e posicionamento de imagens:
+O Bootstrap permite alinhar imagens usando as classes de utilitários de alinhamento.
+
+. Centralizar horizontalmente (block):
+<img src="foto.jpg" class="mx-auto d-block" alt="Centralizada">
+
+  👉 mx-auto = margens automáticas nas laterais.
+  👉 d-block = transforma a imagem em bloco.
+
+
+. Alinhar à esquerda ou direita (inline):
+
+<img src="foto.jpg" class="float-start" alt="Esquerda">
+<img src="foto.jpg" class="float-end" alt="Direita">
+
+
+
+Centralizar usando text-align:
+<div class="text-center">
+  <img src="foto.jpg" class="img-fluid" alt="Centralizada com text-center">
+</div>
+
+
+
+Figuras com legendas:
+- .figure e .figure-caption
+  . Permitem criar imagens com legendas semânticas.
+  . Muito usado em artigos, blogs ou galerias.
+
+📌 Exemplo:
+
+<figure class="figure">
+  <img src="foto.jpg" class="figure-img img-fluid rounded" alt="Imagem com legenda">
+  <figcaption class="figure-caption text-center">
+    Esta é uma legenda de exemplo.
+  </figcaption>
+</figure>
+
+
+👉 Benefícios:
+. Mantém acessibilidade.
+. Estiliza a legenda de forma elegante.
+
+
+
+Outras dicas úteis:
+. Tamanhos personalizados:
+Você pode usar as classes utilitárias de largura/altura (w-25, w-50, w-100, h-auto) para ajustar a proporção.
+html:
+<img src="foto.jpg" class="w-50 h-auto" alt="Metade da largura">
+
+
+. Responsividade em conjunto com grid:
+As imagens funcionam bem dentro do sistema de colunas.
+
+<div class="row">
+  <div class="col-6">
+    <img src="foto1.jpg" class="img-fluid" alt="Imagem 1">
+  </div>
+  <div class="col-6">
+    <img src="foto2.jpg" class="img-fluid" alt="Imagem 2">
+  </div>
+</div>
+
+
+. Lazy Loading (boa prática de performance):
+<img src="foto.jpg" class="img-fluid" alt="Imagem otimizada" loading="lazy">
+
+ 👉 Evita carregar imagens que não aparecem logo na tela.
+
+
+
+Resumindo:
+1. Responsivas: .img-fluid.
+2. Arredondadas: .rounded, .rounded-circle, .rounded-pill.
+3. Miniaturas: .img-thumbnail.
+4. Alinhamento: float-start, float-end, mx-auto d-block, text-center.
+5. Figuras com legenda: .figure e .figure-caption.
+6. Controle de tamanho: w-*, h-*.
+7. Boas práticas: sempre usar alt nas imagens (acessibilidade + SEO).
+
+-->
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewporWt" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+     
+     <div class="container-fluid flex border border-dark p-3 my-3">
+      <img src="paisagem-com-ccqueiros.jpg"  class="w-full rounded"/>
+
+     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

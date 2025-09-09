@@ -1,0 +1,315 @@
+<!--
+Aula 9 – Jumbotron no Bootstrap 🖼️
+
+O que é o Jumbotron?
+O Jumbotron era um componente introduzido no Bootstrap 3 que servia para destacar uma seção principal da página (geralmente o cabeçalho/hero).
+Era uma área grande, geralmente usada para:
+. Apresentar o site ou sistema.
+. Mostrar uma chamada de ação (CTA).
+. Exibir mensagens de destaque.
+
+👉 Em outras palavras, o jumbotron é um “cartaz” de boas-vindas no topo do site.
+
+
+
+Jumbotron no Bootstrap 3 e 4:
+No Bootstrap 3, o Jumbotron era um componente pronto com a classe .jumbotron.
+📌 Exemplo (Bootstrap 3/4):
+
+<div class="jumbotron">
+  <h1 class="display-4">Bem-vindo!</h1>
+  <p class="lead">Este é um exemplo de jumbotron no Bootstrap 3/4.</p>
+  <hr class="my-4">
+  <p>Você pode usar para chamar a atenção.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Saiba mais</a>
+</div>
+
+
+👉 Estilo:
+. Fundo cinza-claro.
+. Padding grande.
+. Texto destacado.
+
+
+
+Bootstrap 5: Adeus Jumbotron 😢:
+No Bootstrap 5, a classe .jumbotron foi removida.
+Isso porque o time do Bootstrap decidiu simplificar os componentes, deixando que os desenvolvedores criassem seções de destaque usando utilitários de espaçamento, tipografia e cores já existentes no framework.
+
+👉 Em vez de usar .jumbotron, agora criamos heros personalizados com container, bg-*, p-*, text-*, etc.
+
+
+
+Como recriar um Jumbotron no Bootstrap 5:
+Exemplo moderno de Hero:
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Bem-vindo ao meu site!</h1>
+    <p class="col-md-8 fs-4">
+      Este é um exemplo de jumbotron recriado no Bootstrap 5 com utilitários.
+    </p>
+    <button class="btn btn-primary btn-lg" type="button">Saiba mais</button>
+  </div>
+</div>
+
+
+👉 O que usamos aqui:
+. p-5 → padding interno grande.
+. mb-4 → margem inferior.
+. bg-light → fundo claro.
+. rounded-3 → cantos arredondados.
+. py-5 → espaçamento interno vertical extra.
+. display-5 → título grande.
+. fw-bold → texto em negrito.
+. fs-4 → fonte maior para subtítulo.
+
+
+
+Personalizando o Jumbotron no Bootstrap 5:
+. Cores de fundo: bg-light, bg-dark, bg-primary, etc.
+. Texto: text-dark, text-white, lead, display-*.
+. Espaçamento: p-*, m-*, py-*, px-*.
+
+Botões: btn btn-primary, btn-lg, btn-outline-*.
+
+📌 Exemplo com fundo escuro:
+
+<div class="p-5 mb-4 bg-dark text-white rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-4">Destaque com fundo escuro</h1>
+    <p class="lead">Este é um jumbotron adaptado para o Bootstrap 5.</p>
+    <a class="btn btn-outline-light btn-lg" href="#">Explorar</a>
+  </div>
+</div>
+
+
+
+
+Diferença entre Jumbotron (BS3/4) e Hero (BS5)
+Versão	           Classe	   Estilo padrão	                                 Personalização
+Bootstrap 3	      .jumbotron   Fundo cinza, padding grande	                      Limitada
+Bootstrap 4	      .jumbotron   Semelhante ao BS3, com mais responsividade	      Moderada
+Bootstrap 5	      ❌Removido	  Não existe mais	                                Feito com utilitários (bg-*, p-*, display-*)
+
+
+Boas práticas para usar Jumbotron/Hero:
+✔ Use sempre texto chamativo (ex.: título grande com display-*).
+✔ Utilize call to action (CTA) como botões (btn btn-primary).
+✔ Garanta contraste entre fundo e texto.
+✔ Torne o hero responsivo (usar col-md-8, fs-4, etc.).
+✔ Não abuse do tamanho — use apenas 1 hero por página.
+
+
+
+
+Resumindo:
+. O Jumbotron foi introduzido no Bootstrap 3 para criar áreas de destaque.
+. No Bootstrap 5, ele foi removido, mas pode ser recriado facilmente usando utilitários.
+. Agora, o conceito de Hero é mais flexível e moderno, permitindo que você personalize totalmente o destaque da sua página.
+
+
+
+
+
+
+
+
+
+
+
+.
+
+🎯 Aula: Controlando a Exibição do Jumbotron com Botões
+O Jumbotron (ou Hero no Bootstrap 5) é um componente usado para destacar conteúdos. Muitas vezes, precisamos mostrar ou ocultar esse bloco dependendo da interação do usuário.
+Existem várias formas de controlar isso no Bootstrap, e cada uma tem suas características.
+
+
+✅ Método 1 – Usando o componente Collapse (Bootstrap nativo, sem JS manual):
+
+📌 Exemplo:
+
+<div class="container my-4">
+  - Botão para mostrar/ocultar 
+  <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#meuJumbotron">
+    Mostrar/Ocultar Jumbotron
+  </button>
+
+  - Jumbotron 
+  <div class="collapse show" id="meuJumbotron">
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <h1 class="display-5 fw-bold">CFB Cursos</h1>
+      <p class="fs-5">Exemplo de jumbotron com collapse do Bootstrap.</p>
+    </div>
+  </div>
+</div>
+
+
+🔎 Explicação:
+. data-bs-toggle="collapse" → ativa a função de abrir/fechar.
+. data-bs-target="#meuJumbotron" → define qual elemento será controlado.
+. .collapse → deixa o elemento "ocultável".
+. .show → exibe o conteúdo por padrão na inicialização.
+
+
+
+📌 Comportamento:
+. O conteúdo é removido visualmente e também do fluxo da página (não ocupa espaço quando fechado).
+. Possui uma animação suave de abrir/fechar.
+
+✔️ Vantagens: não exige código JS extra, simples de implementar.
+❌ Limitação: se precisar de lógicas mais avançadas (ex: mostrar após 5 segundos), você precisará usar JavaScript.
+
+
+
+
+
+✅ Método 2 – Usando JavaScript puro (style.display):
+
+📌 Exemplo:
+
+<div class="container my-4">
+  <button class="btn btn-success" onclick="mostrarJumbotron()">Mostrar</button>
+  <button class="btn btn-danger" onclick="ocultarJumbotron()">Ocultar</button>
+  <button class="btn btn-warning" onclick="toggleJumbotron()">Alternar</button>
+
+  <div id="jumbotronCustom" class="p-5 mb-4 bg-info text-white rounded-3 mt-3">
+    <h1>CFB Cursos</h1>
+    <p>Controle de exibição usando JS puro.</p>
+  </div>
+</div>
+
+<script>
+  const jumbotron = document.getElementById("jumbotronCustom");
+
+  function mostrarJumbotron() {
+    jumbotron.style.display = "block"; // mostra novamente
+  }
+  function ocultarJumbotron() {
+    jumbotron.style.display = "none"; // remove do fluxo e da tela
+  }
+  function toggleJumbotron() {
+    jumbotron.style.display = (jumbotron.style.display === "none") ? "block" : "none";
+  }
+</script>
+
+
+🔎 Explicação:
+. display: none → oculta o elemento e remove do fluxo da página (outros elementos “sobem” para ocupar o espaço).
+. display: block → volta a exibir o elemento.
+. toggle() → alterna entre os dois estados.
+
+✔️ Vantagens: controle total, ideal quando você quer lógica personalizada (ex.: só mostrar em dispositivos mobile, mostrar depois de X segundos).
+❌ Limitação: não tem animação nativa, precisa codar se quiser efeitos.
+
+
+
+
+✅ Método 3 – Usando classes utilitárias (d-none):
+
+📌 Exemplo:
+
+<div class="container my-4">
+  <button class="btn btn-dark" onclick="document.getElementById('jumbotronToggle').classList.toggle('d-none')">
+    Alternar Jumbotron
+  </button>
+
+  <div id="jumbotronToggle" class="p-5 bg-warning rounded-3 mt-3">
+    <h1>CFB Cursos</h1>
+    <p>Exemplo com utilitário <code>d-none</code>.</p>
+  </div>
+</div>
+
+
+🔎 Explicação:
+. d-none é uma classe do Bootstrap que aplica display: none;.
+. Quando removida, o elemento volta a ser exibido.
+. Funciona parecido com o style.display, mas usando classes prontas do Bootstrap.
+
+✔️ Vantagens: simples, direto, segue o padrão do Bootstrap.
+❌ Limitação: também não tem animação, apenas aparece/desaparece.
+
+
+
+
+
+✅ Método 4 – Usando a classe .invisible (sua solução):
+
+📌 Exemplo:
+
+<div id="jumbotrom" class="container bg-primary text-white p-4 rounded my-4">
+  <h1>CFB Cursos</h1>
+  <hr/>
+  <p>Cursos de desenvolvimento de softwares em geral.</p>
+</div>
+
+<div class="container">
+  <button class="btn btn-danger" onclick="document.getElementById('jumbotrom').classList.add('invisible')">Ocultar</button>
+  <button class="btn btn-success" onclick="document.getElementById('jumbotrom').classList.remove('invisible')">Mostrar</button>
+</div>
+
+
+🔎 Explicação:
+. .invisible aplica visibility: hidden;.
+. O elemento fica invisível, mas o espaço que ele ocupa continua reservado na tela.
+. Diferente de d-none, que remove o bloco do layout, o .invisible só “esconde” visualmente.
+
+✔️ Vantagens: rápido, muito simples de implementar.
+❌ Limitação: pode deixar “buracos” na página, porque o espaço vazio permanece.
+
+📊 Comparação final
+Método	            Ocupa espaço oculto?	Precisa de JS extra?	   Tem animação?	         Ideal para...
+collapse	        ❌ Não                  ❌ Não	                 ✅ Sim	                 Esconder/mostrar com animação rápida
+style.display	    ❌ Não	               ✅ Sim	                 ❌ Não	                 Controle total com lógica avançada
+d-none	            ❌ Não	               ✅ Sim (toggle)	         ❌ Não	                 Simples, direto, seguindo Bootstrap
+invisible	        ✅ Sim (mantém espaço)  ✅ Sim (toggle)	         ❌ Não	                 Quando quer manter layout intacto
+
+-->
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewporWt" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+     
+     <div id="jumbotrom" class="container bg-primary text-white p-4 rounded">
+        <h1>CFB Cursos</h1>
+        <hr/>
+        <p>Cursos de desenvolvimento de softwares em geral.</p>
+    
+       
+    </div>
+
+    
+        <div class="container">
+            <button onclick="document.getElementById('jumbotrom').classList.add('invisible')">Ocultar</button>
+             <button onclick="document.getElementById('jumbotrom').classList.remove('invisible')">Mostrar</button>
+            
+        </div>
+
+
+
+
+        <div class="container my-4">
+  <!-- Botão para mostrar/ocultar -->
+  <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#meuJumbotron">
+    Mostrar/Ocultar Jumbotron
+  </button>
+
+  <!-- Jumbotron -->
+  <div class="collapse show" id="meuJumbotron">
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <h1 class="display-5 fw-bold">CFB Cursos</h1>
+      <p class="fs-5">Exemplo de jumbotron com collapse do Bootstrap.</p>
+    </div>
+  </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

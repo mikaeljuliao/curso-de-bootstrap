@@ -1,0 +1,212 @@
+<!--
+
+📢 Aula 10 – Alertas no Bootstrap (explicação detalhada)
+
+Os alertas são componentes visuais usados para feedback imediato.
+Eles têm como objetivo informar o usuário sobre o estado de uma ação: se deu certo, se falhou, se precisa de atenção ou apenas trazer uma mensagem informativa.
+
+👉 No Bootstrap 5, um alerta é construído a partir de:
+. Classe base: .alert (sempre obrigatória).
+. Classe contextual: .alert-success, .alert-danger, etc. (define a cor e o contexto).
+. Atributos de acessibilidade: como role="alert".
+
+
+
+
+✅ Estrutura básica de um alerta:
+<div class="alert alert-primary" role="alert">
+  Este é um alerta azul (informativo)!
+</div>
+
+🔎 Explicação linha a linha:
+. .alert → sem ela não existe alerta. Essa classe aplica padding, bordas arredondadas e tipografia.
+. .alert-primary → estilo contextual (azul padrão). Cada cor tem um significado.
+. role="alert" → atributo ARIA, usado para acessibilidade: leitores de tela anunciam o conteúdo do alerta imediatamente.
+
+📌 Importante: se você usar alertas apenas como elementos visuais e não críticos, role="alert" pode ser omitido. Mas para feedback importante, sempre use.
+
+
+
+
+🎨 Tipos de alertas (classes contextuais):
+
+O Bootstrap traz 8 classes contextuais. Todas usam cores do sistema padrão de design.
+
+Classe:	             Cor:                   Uso recomendado:
+.alert-primary	     Azul	                Informações principais
+.alert-secondary	 Cinza	                Mensagens neutras
+.alert-success	     Verde	                Confirmação de sucesso
+.alert-danger	     Vermelho	            Erros graves, falhas
+.alert-warning	     Amarelo	            Atenção, risco potencial
+.alert-info	         Azul claro	            Informação adicional
+.alert-light	     Cinza claro	        Avisos suaves
+.alert-dark	         Preto/cinza escuro	    Texto destacado, contraste
+
+📌 Exemplo prático:
+<div class="alert alert-success">✅ Cadastro realizado com sucesso!</div>
+<div class="alert alert-danger">❌ Erro ao salvar os dados.</div>
+<div class="alert alert-warning">⚠️ Preencha todos os campos obrigatórios.</div>
+<div class="alert alert-info">ℹ️ Nova atualização disponível.</div>
+
+
+
+✍️ Conteúdo dentro dos alertas:
+Os alertas não precisam ser apenas texto simples. Eles aceitam qualquer HTML básico.
+
+Exemplo com formatação:
+
+<div class="alert alert-warning" role="alert">
+  <h4 class="alert-heading">Atenção!</h4>
+  <p>Você precisa revisar os dados enviados antes de prosseguir.</p>
+  <hr>
+  <p class="mb-0">Clique <a href="#" class="alert-link">aqui</a> para corrigir.</p>
+</div>
+
+🔎 O que foi usado:
+. .alert-heading → título do alerta.
+. <p> → texto formatado, pode ter margens controladas com classes utilitárias.
+. <hr> → divisor horizontal, separa seções.
+. .alert-link → links estilizados com cor correspondente ao alerta (fica legível em qualquer contexto).
+
+
+
+
+
+❌ Alertas descartáveis (com botão de fechar):
+
+Os alertas descartáveis são aqueles que o usuário pode fechar manualmente.
+No Bootstrap 5, isso é feito combinando várias classes e atributos.
+
+📌 Exemplo:
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Erro!</strong> Ocorreu uma falha ao salvar.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+</div>
+
+🔎 Explicação detalhada (passo a passo):
+
+1. .alert-dismissible:
+  . Essa classe não fecha o alerta sozinha.
+  . O que ela faz é preparar o alerta para ser fechável.
+  . Ela adiciona padding extra à direita do alerta, criando espaço onde o botão de fechar (.btn-close) vai ficar.
+  . Sem ela, o botão de fechar ficaria sobreposto ao texto.
+
+2. .btn-close:
+  . É o botão de fechar padrão do Bootstrap 5 (substitui o “×” que existia no Bootstrap 4).
+  . Ele aparece no canto do alerta quando usado dentro de um alerta com .alert-dismissible.
+
+3, data-bs-dismiss="alert"
+  . Esse atributo é o que realmente ativa o fechamento automático.
+  . Ao clicar no botão, o Bootstrap usa seu JavaScript interno para remover o alerta do DOM.
+  . Ou seja: é isso que faz o alerta desaparecer de verdade.
+
+4. .fade + .show
+  . Trabalham juntos para dar uma animação suave.
+  . O alerta aparece com transição (fade in) e desaparece suavemente (fade out) ao ser fechado.
+  . Se você não usar essas classes, o alerta vai sumir de forma instantânea.
+
+5. aria-label="Fechar":
+  . É apenas para acessibilidade.
+  . Usuários com leitores de tela vão ouvir algo como “botão: fechar”.
+  . Não influencia em nada visual ou funcional.
+
+📌 Resumindo de forma bem clara:
+. .alert-dismissible → apenas prepara o espaço para o botão.
+. .btn-close + data-bs-dismiss="alert" → são os responsáveis reais por fechar o alerta.
+. .fade.show → deixam o fechamento mais elegante (animação).
+. aria-label="Fechar" → acessibilidade.
+
+
+
+
+
+
+⚡ Criando alertas dinamicamente com JavaScript:
+
+Muitas vezes você precisa exibir alertas após uma ação (ex.: envio de formulário).
+Podemos injetar o HTML do alerta via JavaScript.
+
+<button class="btn btn-primary" onclick="mostrarAlerta()">Mostrar Alerta</button>
+
+<div id="area-alerta" class="mt-3"></div>
+
+<script>
+function mostrarAlerta() {
+  const alerta = `
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      ✅ Operação concluída com sucesso!
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  `;
+  document.getElementById("area-alerta").innerHTML = alerta;
+}
+</script>
+
+🔎 Detalhes importantes:
+. O Bootstrap já vem com JavaScript embutido que gerencia os alertas (bootstrap.bundle.min.js inclui isso).
+. O evento data-bs-dismiss="alert" funciona automaticamente, não precisa escrever código para remover.
+. Se quiser maior controle, pode usar a API de JavaScript do Bootstrap (new bootstrap.Alert(element)).
+
+
+
+
+⚖️ Diferença entre formas de esconder alertas:
+. Descartável (.alert-dismissible) → usuário fecha, e o alerta é removido do DOM.
+. .d-none (utilitário) → esconde o alerta, mas você decide quando mostrar/esconder via classes.
+. .invisible → oculta visualmente, mas mantém o espaço reservado.
+
+📌 Exemplo com utilitários:
+
+<div id="alerta1" class="alert alert-info d-none">Eu apareço com d-none!</div>
+<div id="alerta2" class="alert alert-warning invisible">Eu fico invisível, mas ocupo espaço!</div>
+
+
+
+
+💡 Boas práticas no uso de alertas:
+1. Use cores semânticas: nunca use alertas fora de contexto (ex.: alert-success para mostrar erro).
+2. Seja breve e direto: alertas devem ser rápidos de ler.
+3. Combine com ícones (ex.: usando Bootstrap Icons
+):
+
+<div class="alert alert-info d-flex align-items-center" role="alert">
+  <i class="bi bi-info-circle-fill me-2"></i>
+  Informação importante para o usuário.
+</div>
+
+4. Acessibilidade sempre: role="alert" e aria-label nos botões de fechar.
+5. Evite excesso: muitos alertas na tela ao mesmo tempo confundem.
+
+
+
+
+📊 Resumo geral:
+.  .alert → classe base, sempre necessária.
+. Cores/contextos: primary, secondary, success, danger, warning, info, light, dark.
+. Conteúdo flexível: títulos, links, divisores.
+. Descartáveis: .alert-dismissible + .btn-close.
+. Dinâmicos: podem ser criados/mostrados com JavaScript.
+. Controle de visibilidade: via classes (d-none, invisible) ou descarte automático.
+. Boas práticas: clareza, semântica, acessibilidade e ícones para melhor UX.
+
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewporWt" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+     
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Erro!</strong> Ocorreu uma falha ao salvar.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
