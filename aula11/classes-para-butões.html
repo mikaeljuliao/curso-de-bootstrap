@@ -1,0 +1,229 @@
+<!--
+
+🔘 Aula 11 — Botões no Bootstrap (bem detalhada):
+
+1) O que é um “botão” no HTML e no Bootstrap?
+1. Em HTML, um “botão” pode ser:
+. <button> (recomendado para ações)
+  . <a> (link, recomendado para navegação; pode ser estilizado como botão)
+  . <input type="button|submit|reset"> (mais usado em formulários)
+. No Bootstrap, qualquer um desses elementos vira um botão visual ao receber a classe .btn.
+A partir daí você adiciona modificadores (cor, tamanho, etc).
+
+
+
+2) Anatomia (sintaxe mínima) de um botão Bootstrap:
+<button type="button" class="btn btn-primary">Enviar</button>
+
+. class="btn" → torna o elemento um botão Bootstrap (estilo base, padding, borda, tipografia).
+. class="btn-primary" → variação de cor/semântica (há várias).
+. type="button" → muito importante em formulários: se você NÃO colocar type, o padrão do <button> dentro de <form> é submit (pode enviar o formulário sem querer).
+
+💡 Regra de ouro:
+. Ação (abrir modal, salvar via JS, etc.) → prefira <button type="button">.
+. Enviar formulário → <button type="submit">.
+. Resetar formulário → <button type="reset">.
+
+
+
+3) Paleta de estilos (cores contextuais):
+
+Use o contexto certo para comunicar a intenção do botão:
+
+Classe	                  Uso comum (semântica)	             Exemplo
+.btn-primary	          Ação principal da página	         “Salvar”, “Comprar”
+.btn-secondary	          Ação secundária	                 “Cancelar”
+.btn-success	          Sucesso/confirmar	                 “Concluir”, “OK”
+.btn-danger	              Ação destrutiva/risco	             “Excluir”, “Remover”
+.btn-warning	          Atenção	                         “Revisar”
+.btn-info	              Informação neutra	                 “Detalhes”
+.btn-light	              Visual leve                        (fundo claro)	Uso sutil
+.btn-dark	              Alto contraste	                 “Ver mais”
+
+<button class="btn btn-primary">Salvar</button>
+<button class="btn btn-secondary">Cancelar</button>
+<button class="btn btn-success">Concluir</button>
+<button class="btn btn-danger">Excluir</button>
+
+
+
+Variante “apenas contorno” (mais leve):
+Troque o preenchido por contorno com btn-outline-*:
+
+<button class="btn btn-outline-primary">Outline Azul</button>
+<button class="btn btn-outline-danger">Outline Vermelho</button>
+
+
+Botão com aparência de link:
+<button class="btn btn-link">Pareço link, mas sou botão</button>
+
+
+
+
+4) Tamanhos e largura:
+Altura (tamanho do botão)
+. .btn-lg → grande
+. .btn-sm → pequeno
+. (sem classe) → médio (padrão)
+
+<button class="btn btn-primary btn-lg">Grande</button>
+<button class="btn btn-primary">Médio</button>
+<button class="btn btn-primary btn-sm">Pequeno</button>
+
+
+Largura total (full-width / “botão de bloco”):
+. Bootstrap 4: existia .btn-block (depreciado no Bootstrap 5).
+. Bootstrap 5: use .w-100 direto no botão ou um contêiner .d-grid.
+
+- Opção 1: ocupar 100% do espaço 
+<button class="btn btn-primary w-100">Continuar</button>
+
+- Opção 2: grid para empilhar e dar espaçamento 
+<div class="d-grid gap-2">
+  <button class="btn btn-success">Confirmar</button>
+  <button class="btn btn-outline-secondary">Cancelar</button>
+</div>
+
+  🔁 Responsivo: você pode combinar utilitários por breakpoint:
+class="btn btn-primary w-100 w-md-auto" → 100% no mobile, auto no desktop.
+
+
+
+
+
+5) Estados do botão (ativo, foco, desabilitado, carregando)::: 
+a) Desabilitado (muito importante!):
+. Não é classe do Bootstrap.
+. Em <button>, você usa o atributo HTML disabled (sem valor mesmo).
+. Em <a>, disabled não funciona, então o Bootstrap fornece a classe .disabled para parecer desabilitado (visualmente). Para acessibilidade, use também aria-disabled="true" e remova o foco/ação.
+
+- Botão real desabilitado (HTML) 
+<button class="btn btn-primary" disabled>Salvar (desabilitado)</button>
+
+- Link “desabilitado” (estético + acessibilidade) 
+<a class="btn btn-secondary disabled" aria-disabled="true" tabindex="-1" role="button">Link desabilitado</a>
+
+. <button disabled>: bloqueia clique e foco.
+. <a class="disabled">: visualmente desativado; previna ações via JS se necessário (o usuário ainda poderia ativar via teclado se você não tratar).
+
+
+
+b) Ativo (pressionado):
+<button class="btn btn-outline-primary active" aria-pressed="true">Ativo</button>
+
+. .active muda o estilo para “pressionado”.
+. aria-pressed="true" comunica o estado para leitores de tela.
+
+
+
+c) Foco/hover:
+O Bootstrap estiliza automaticamente :hover e :focus para cada cor.
+Importa para acessibilidade (teclado mostra “focus ring”).
+
+
+
+d) Carregando (spinner):
+<button class="btn btn-primary" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+  <span class="ms-1">Carregando…</span>
+</button>
+
+. Desative o botão enquanto processa.
+. Inclua texto além do spinner para acessibilidade.
+
+
+6) Grupos e barras de botões:
+Agrupe botões relacionados com .btn-group ou várias em uma .btn-toolbar.
+
+- Grupo horizontal 
+<div class="btn-group" role="group" aria-label="Navegação paginada">
+  <button class="btn btn-outline-secondary">Anterior</button>
+  <button class="btn btn-outline-secondary">1</button>
+  <button class="btn btn-outline-secondary">2</button>
+  <button class="btn btn-outline-secondary">Próximo</button>
+</div>
+
+- Grupo vertical 
+<div class="btn-group-vertical mt-3" role="group">
+  <button class="btn btn-primary">Opção A</button>
+  <button class="btn btn-primary">Opção B</button>
+</div>
+
+- Toolbar (vários grupos na mesma linha) 
+<div class="btn-toolbar mt-3" role="toolbar">
+  <div class="btn-group me-2" role="group">
+    <button class="btn btn-secondary">Cortar</button>
+    <button class="btn btn-secondary">Copiar</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button class="btn btn-secondary">Colar</button>
+  </div>
+</div>
+
+
+
+
+7) Botões com comportamento “toggle” (liga/desliga):
+
+Sem escrever JS, você pode alternar o estado ativo:
+
+<button type="button"
+        class="btn btn-outline-primary"
+        data-bs-toggle="button"
+        aria-pressed="false"
+        autocomplete="off">
+  Alternar
+</button>
+
+. O Bootstrap alterna .active e aria-pressed ao clicar.
+. Para grupos exclusivos (tipo “rádio”), prefira botões check/radio estilizados com .btn-check (tema avançado).
+
+
+
+
+8) Botões + ícones (UX melhor):
+Use ícones para reforçar a ação (ex.: Bootstrap Icons).
+
+<button class="btn btn-success">
+  <i class="bi bi-check2-circle"></i>
+  <span class="ms-1">Salvar</span>
+</button>
+
+- Ícone sozinho precisa de rótulo acessível 
+<button class="btn btn-danger" aria-label="Excluir">
+  <i class="bi bi-trash"></i>
+</button>
+
+
+
+9) <button> x <a> x <input> — quando usar?
+. <button>: ações dentro da página (abrir modal, salvar via JS). Semântico e acessível.
+. <a>: navegação entre páginas/URLs. Pode ter .btn para parecer botão.
+. <input type="submit|reset|button">: formulários legados; hoje <button> é mais flexível (aceita HTML interno).
+
+
+
+
+10) Erros comuns e como evitar:
+1. Esquecer type="button" dentro de <form> → o clique envia o formulário sem querer.
+2. Tentar usar disabled como classe → não existe; em <button> é atributo.
+3. Achar que .disabled “bloqueia” <a> → é visual; previna a ação via JS se necessário.
+4. Usar btn-block no Bootstrap 5 → foi removido; use w-100 ou d-grid.
+5. Contraste fraco (ex.: btn-light sobre fundo claro) → verifique legibilidade.
+
+
+
+11) Cola rápida (cheatsheet):
+. Base: <button class="btn btn-primary" type="button">Texto</button>
+. Outline: btn-outline-*
+. Tamanho: btn-sm, btn-lg
+. Full-width: w-100 (BS5) / btn-block (apenas BS4)
+. Desabilitar:
+  . <button disabled> ✅
+  . <a class="disabled" aria-disabled="true" tabindex="-1"> (visual) ⚠️
+. Ativo: .active + aria-pressed="true"
+. Toggle: data-bs-toggle="button"
+. Grupo: .btn-group, .btn-toolbar
+. Spinner: <span class="spinner-border spinner-border-sm"></span>
+
+-->

@@ -1,0 +1,146 @@
+<!--
+
+Aula 13 — Alinhamento e Posicionamento em Bootstrap (com imagens)
+O Bootstrap oferece várias classes utilitárias para alinhar e posicionar elementos, sem precisar escrever CSS manual.
+Nesta aula, vamos aplicar principalmente em imagens, mas lembre-se: os mesmos conceitos funcionam para qualquer elemento HTML.
+
+
+
+1) Imagem responsiva (classe base):
+Antes de falar de alinhamento, é importante garantir que a imagem seja adaptável ao tamanho do container:
+html:
+<img src="imagem.jpg" class="img-fluid" alt="Exemplo">
+
+
+🔎 O que faz:
+. .img-fluid → aplica max-width: 100% e height: auto;, ou seja, a imagem se ajusta ao container.
+
+
+2) Alinhamento horizontal:
+Existem várias formas de alinhar imagens na horizontal:
+
+a) Usando utilitários de texto (.text-start, .text-center, .text-end)
+<div class="text-start">
+  <img src="imagem.jpg" class="img-fluid" alt="Alinhada à esquerda">
+</div>
+
+<div class="text-center">
+  <img src="imagem.jpg" class="img-fluid" alt="Centralizada">
+</div>
+
+<div class="text-end">
+  <img src="imagem.jpg" class="img-fluid" alt="Alinhada à direita">
+</div>
+
+
+b) Usando utilitários de margin (.mx-auto d-block)
+<img src="imagem.jpg" class="img-fluid mx-auto d-block" alt="Centralizada com margin auto">
+
+. .mx-auto → aplica margin-left: auto; margin-right: auto;
+. .d-block → transforma a imagem em display: block; (necessário para margin auto funcionar).
+
+
+c) Usando Flexbox (.d-flex, .justify-content-*):
+<div class="d-flex justify-content-start">
+  <img src="imagem.jpg" class="img-fluid" alt="Esquerda">
+</div>
+
+<div class="d-flex justify-content-center">
+  <img src="imagem.jpg" class="img-fluid" alt="Centro">
+</div>
+
+<div class="d-flex justify-content-end">
+  <img src="imagem.jpg" class="img-fluid" alt="Direita">
+</div>
+
+
+
+3) Alinhamento vertical (quando há altura definida)
+
+Quando as imagens estão dentro de um container com altura fixa, usamos align-items-* (Flexbox):
+
+<div class="d-flex align-items-start" style="height: 200px; border: 1px solid #ccc;">
+  <img src="imagem.jpg" class="img-fluid" alt="Topo">
+</div>
+
+<div class="d-flex align-items-center" style="height: 200px; border: 1px solid #ccc;">
+  <img src="imagem.jpg" class="img-fluid" alt="Centro">
+</div>
+
+<div class="d-flex align-items-end" style="height: 200px; border: 1px solid #ccc;">
+  <img src="imagem.jpg" class="img-fluid" alt="Baixo">
+</div>
+
+. .align-items-start → alinha no topo
+. .align-items-center → alinha no meio vertical
+. .align-items-end → alinha na parte inferior
+
+
+
+4) Float utilities (flutuação da imagem):
+As imagens podem ser alinhadas usando float:
+
+<img src="imagem.jpg" class="img-fluid float-start" alt="Esquerda">
+<img src="imagem.jpg" class="img-fluid float-end" alt="Direita">
+<img src="imagem.jpg" class="img-fluid mx-auto d-block" alt="Centro (sem float)">
+
+. .float-start → esquerda
+. .float-end → direita
+. .clearfix → limpa floats dentro do container
+
+
+
+5) Imagens como miniaturas (com borda arredondada):
+Bootstrap permite estilizar imagens como thumbnails:
+html:
+<img src="imagem.jpg" class="img-thumbnail" alt="Miniatura">
+
+. .img-thumbnail → adiciona borda, padding e cantos arredondados.
+
+
+
+6) Bordas arredondadas (radius utilities):
+
+Quer arredondar a imagem? Use .rounded-*:
+
+<img src="imagem.jpg" class="rounded" alt="Arredondada levemente">
+<img src="imagem.jpg" class="rounded-circle" alt="Circular">
+<img src="imagem.jpg" class="rounded-pill" alt="Pílula (oval)">
+
+
+
+7) Posicionamento absoluto/relativo (utilities de position)
+
+Com as classes de positioning (.position-*), podemos posicionar imagens dentro de um container:
+
+<div class="position-relative" style="height: 200px; background: #f8f9fa;">
+  <img src="imagem.jpg" class="position-absolute top-0 start-0" alt="Topo esquerdo">
+  <img src="imagem.jpg" class="position-absolute top-50 start-50 translate-middle" alt="Centro exato">
+  <img src="imagem.jpg" class="position-absolute bottom-0 end-0" alt="Inferior direito">
+</div>
+
+
+Classes principais:
+. .position-relative → define o container como referência.
+. .position-absolute → posiciona a imagem dentro do container.
+. .top-0, .bottom-0, .start-0, .end-0 → controla posição.
+. .translate-middle → centraliza exato no ponto.
+
+
+
+
+8) Resumo (cheatsheet rápido):
+Classe:	                                         Função:
+.img-fluid	                                     imagem responsiva
+.img-thumbnail	                                 borda + padding
+.rounded, .rounded-circle, .rounded-pill	     bordas arredondadas
+.text-start, .text-center, .text-end	         alinhamento por texto
+.mx-auto d-block	                             centralização com margin auto
+.d-flex justify-content-*	                     alinhamento horizontal com Flexbox
+.d-flex align-items-*	                         alinhamento vertical com Flexbox
+.float-start, .float-end	                     alinhamento por float
+.position-relative + .position-absolute	         posicionamento manual
+.top-0, .bottom-0, .start-0, .end-0	             coordenadas do posicionamento
+
+
+-->

@@ -1,0 +1,392 @@
+<!--
+🔘 Aula 11 — Botões no Bootstrap (super detalhada)
+1) O que é um botão no HTML e no Bootstrap?
+No HTML puro, um botão pode ser representado por:
+
+. <button> → recomendado para ações (clicar, abrir modal, salvar via JS, etc.).
+. <a> → link para navegar entre páginas/URLs. Com o Bootstrap pode ser estilizado como botão.
+. <input type="button|submit|reset"> → botões específicos de formulário (menos flexíveis).
+
+👉 No Bootstrap: qualquer um desses elementos recebe visual de botão ao aplicar a classe .btn.
+
+
+2) Sintaxe mínima (anatomia de um botão):
+<button type="button" class="btn btn-primary">Enviar</button>
+
+
+Explicando:
+ .class="btn" → estilo base de botão (padding, borda, tipografia).
+. class="btn-primary" → cor do botão (tema principal).
+. type="button" → define o comportamento:
+  . type="button" → ação genérica (não envia formulário).
+  . type="submit" → envia formulário.
+  . type="reset" → reseta formulário.
+
+
+⚠️ Regra de ouro: sempre defina o type, senão o navegador assume submit por padrão dentro de <form>.
+
+
+
+
+3) Paleta de cores (classes contextuais):
+O Bootstrap usa classes semânticas para indicar a intenção do botão:
+
+Classe	                Significado	             Exemplo de uso
+.btn-primary	        Ação principal	         “Salvar”, “Comprar”
+.btn-secondary	        Ação secundária	         “Cancelar”
+.btn-success	        Sucesso	                 “Confirmar”
+.btn-danger	            Ação destrutiva	         “Excluir”
+.btn-warning	        Atenção	                 “Revisar”
+.btn-info	            Informação neutra	     “Detalhes”
+.btn-light             	Fundo claro	             Uso discreto
+.btn-dark	            Contraste alto	         “Mais opções”
+
+Exemplo:
+
+<button class="btn btn-primary">Salvar</button>
+<button class="btn btn-danger">Excluir</button>
+
+
+
+
+4) Variações de estilo:
+. Botão contornado (outline):
+Usa só borda e texto colorido, mais leve visualmente.
+html:
+<button class="btn btn-outline-primary">Outline Azul</button>
+<button class="btn btn-outline-danger">Outline Vermelho</button>
+
+. Botão com aparência de link:
+<button class="btn btn-link">Sou botão, pareço link</button>
+
+
+
+
+5) Tamanhos e largura:
+Altura (classes de tamanho):
+. .btn-lg → botão grande.
+. .btn-sm → botão pequeno.
+. (sem classe) → tamanho padrão.
+
+<button class="btn btn-primary btn-lg">Grande</button>
+<button class="btn btn-primary">Médio</button>
+<button class="btn btn-primary btn-sm">Pequeno</button>
+
+Largura total:
+. Bootstrap 4: .btn-block (depreciado no v5).
+. Bootstrap 5: .w-100 ou .d-grid.
+
+- Ocupa 100% 
+<button class="btn btn-primary w-100">Continuar</button>
+
+- Empilhados com espaçamento 
+<div class="d-grid gap-2">
+  <button class="btn btn-success">Confirmar</button>
+  <button class="btn btn-outline-secondary">Cancelar</button>
+</div>
+
+
+👉 Responsivo:
+class="btn btn-primary w-100 w-md-auto" → 100% no mobile, automático no desktop.
+
+
+
+
+6) Estados do botão:
+a) Desabilitado:
+. <button disabled> → realmente desativa (sem clique, sem foco).
+. <a> → precisa de .disabled (apenas visual) + aria-disabled="true" + tabindex="-1".
+
+<button class="btn btn-primary" disabled>Salvar</button>
+<a class="btn btn-secondary disabled" aria-disabled="true" tabindex="-1">Link desabilitado</a>
+
+
+b) Ativo:
+<button class="btn btn-outline-primary active" aria-pressed="true">Ativo</button>
+
+. .active → visual de pressionado.
+. aria-pressed="true" → acessibilidade.
+
+
+c) Foco e hover:
+Já vem prontos no Bootstrap (:hover, :focus).
+Mostram anel de foco (essencial para acessibilidade via teclado).
+
+
+
+
+d) Carregando:
+<button class="btn btn-primary" disabled>
+  <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+  <span class="ms-1">Carregando…</span>
+</button>
+
+. Inclua texto além do spinner para leitores de tela.
+
+
+7) Grupos e barras de botões:
+. .btn-group → agrupa botões lado a lado.
+. .btn-group-vertical → empilha verticalmente.
+. .btn-toolbar → combina vários grupos.
+
+- Grupo 
+<div class="btn-group" role="group">
+  <button class="btn btn-outline-secondary">1</button>
+  <button class="btn btn-outline-secondary">2</button>
+</div>
+
+- Vertical 
+<div class="btn-group-vertical">
+  <button class="btn btn-primary">Opção A</button>
+  <button class="btn btn-primary">Opção B</button>
+</div>
+
+
+
+
+8) Botões “toggle” (liga/desliga):
+A) Toggle simples:
+<button class="btn btn-outline-primary"
+        data-bs-toggle="button"
+        aria-pressed="false"
+        autocomplete="off">
+  Alternar
+</button>
+
+
+B) Toggle avançado (btn-check):
+Mais acessível, usa input invisível:
+
+<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+<label class="btn btn-outline-primary" for="btncheck1">Opção</label>
+
+
+
+
+9) Botões com ícones:
+Combine com Bootstrap Icons:
+
+<button class="btn btn-success">
+  <i class="bi bi-check2-circle"></i>
+  <span class="ms-1">Salvar</span>
+</button>
+
+
+. Ícone sozinho → use aria-label:
+<button class="btn btn-danger" aria-label="Excluir">
+  <i class="bi bi-trash"></i>
+</button>
+
+
+
+10) <button> vs <a> vs <input> — quando usar?
+. <button> → ações dentro da página (salvar, abrir modal).
+. <a> → navegação (links).
+. <input> → formulários legados (menos usado hoje).
+
+
+
+11) Erros comuns:
+❌ Esquecer type="button" dentro de formulário → botão envia form sem querer.
+❌ Usar .disabled achando que desativa <a> → é só visual.
+❌ Tentar usar .btn-block no BS5 → substituído por .w-100.
+❌ Contraste ruim (ex.: .btn-light em fundo claro).
+
+
+
+12) Cola rápida (todas as classes úteis):
+. Base: .btn
+. Cores: .btn-primary, .btn-secondary, .btn-success, .btn-danger, .btn-warning, .btn-info, .btn-light, .btn-dark
+. Contorno: .btn-outline-*
+. Link: .btn-link
+. Tamanhos: .btn-lg, .btn-sm
+. Largura: .w-100 (BS5) | .btn-block (BS4)
+. Estados: .active, .disabled (em <a>), [disabled] (em <button>)
+. Grupo: .btn-group, .btn-group-vertical, .btn-toolbar
+. Toggle: [data-bs-toggle="button"], .btn-check + label.btn
+. Spinner: .spinner-border, .spinner-grow
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+⬇️ Botões com Dropdown no Bootstrap:
+Os dropdowns permitem criar menus suspensos que aparecem ao clicar em um botão.
+Eles são usados em navegação, filtros, seleção de opções etc.
+
+No Bootstrap, o dropdown precisa de três elementos básicos:
+
+1. Um contêiner com .dropdown ou .btn-group.
+2. Um botão com data-bs-toggle="dropdown".
+3. Um menu com .dropdown-menu que contém os itens .dropdown-item.
+
+📌 Estrutura básica
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Ações
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Opção 1</a></li>
+    <li><a class="dropdown-item" href="#">Opção 2</a></li>
+    <li><a class="dropdown-item" href="#">Opção 3</a></li>
+  </ul>
+</div>
+
+
+🔎 Explicando:
+. .dropdown → ativa o comportamento de menu suspenso.
+. .dropdown-toggle → estiliza o botão e adiciona o ícone de seta.
+. data-bs-toggle="dropdown" → faz o botão abrir/fechar o menu.
+. .dropdown-menu → caixa suspensa com opções.
+. .dropdown-item → estiliza cada item do menu.
+. aria-expanded="false" → acessibilidade (controla o estado aberto/fechado).
+
+
+
+🎨 Cores do botão:
+Você pode combinar qualquer classe de botão (btn-primary, btn-success, btn-outline-*) com o dropdown:
+
+<div class="dropdown">
+  <button class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">
+    Ações
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Ver</a></li>
+    <li><a class="dropdown-item" href="#">Editar</a></li>
+  </ul>
+</div>
+
+
+
+
+📏 Tamanhos:
+O dropdown respeita os tamanhos dos botões:
+
+- Grande 
+<div class="dropdown">
+  <button class="btn btn-primary btn-lg dropdown-toggle" data-bs-toggle="dropdown">
+    Grande
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Item</a></li>
+  </ul>
+</div>
+
+- Pequeno 
+<div class="dropdown">
+  <button class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+    Pequeno
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Item</a></li>
+  </ul>
+</div>
+
+
+
+
+🧭 Direções (posição do menu)
+Por padrão, o menu abre para baixo, mas você pode mudar:
+. .dropup → abre para cima.
+. .dropend → abre para a direita.
+. .dropstart → abre para a esquerda.
+
+- Para cima 
+<div class="btn-group dropup">
+  <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+    Dropup
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Item</a></li>
+  </ul>
+</div>
+
+- Para a direita 
+<div class="btn-group dropend">
+  <button class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">
+    Dropend
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Item</a></li>
+  </ul>
+</div>
+
+- Para a esquerda 
+<div class="btn-group dropstart">
+  <button class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown">
+    Dropstart
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Item</a></li>
+  </ul>
+</div>
+
+
+
+
+🧩 Conteúdo especial dentro do menu:
+. Além de links, o menu pode conter:
+. Divisores (.dropdown-divider)
+. Cabeçalhos (.dropdown-header)
+. Itens desabilitados (.disabled)
+
+<div class="dropdown">
+  <button class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+    Mais opções
+  </button>
+  <ul class="dropdown-menu">
+    <li><h6 class="dropdown-header">Configurações</h6></li>
+    <li><a class="dropdown-item" href="#">Perfil</a></li>
+    <li><a class="dropdown-item" href="#">Preferências</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Bloqueado</a></li>
+  </ul>
+</div>
+
+
+
+
+🔗 Botão dividido (split button dropdown):
+
+Você pode ter um botão de ação principal + seta para menu separado:
+
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Salvar</button>
+  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Alternar menu</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Salvar e continuar</a></li>
+    <li><a class="dropdown-item" href="#">Salvar como rascunho</a></li>
+  </ul>
+</div>
+
+ .dropdown-toggle-split → ajusta a seta para ficar separada.
+.  visually-hidden → texto oculto, só para acessibilidade.
+
+
+
+📝 Resumo das classes principais:
+Classe	                    Função
+.dropdown	                contêiner base do menu suspenso
+.dropdown-toggle	        botão que abre o menu
+data-bs-toggle="dropdown"	ativa o comportamento via JS
+.dropdown-menu	            caixa de opções
+.dropdown-item	            item clicável do menu
+.dropdown-divider	        divisor entre itens
+.dropdown-header	        cabeçalho de seção
+.disabled	                item desabilitado
+.dropup	                    abre para cima
+.dropend	                abre para a direita
+.dropstart	                abre para a esquerda
+.dropdown-toggle-split	    cria botão dividido
+-->
