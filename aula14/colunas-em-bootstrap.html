@@ -1,0 +1,255 @@
+<!-- 
+ 
+
+
+📐 Aula 14 — Colunas no Bootstrap (alinhamento e posicionamento)
+
+O sistema de grid (grades) do Bootstrap é baseado em 12 colunas virtuais por linha.
+Isso significa que, ao montar um layout, você pode dividir o espaço de várias formas: 12 colunas únicas, 6 colunas de 2 espaços, 4 colunas de 3 espaços, etc.
+
+
+🔑 Estrutura básica:
+Um grid no Bootstrap sempre segue três níveis:
+1. Container → define a área principal (.container ou .container-fluid).
+2. Row (linha) → organiza as colunas (.row).
+3. Col (coluna) → o conteúdo dentro da linha (.col).
+
+📌 Exemplo:
+
+<div class="container">
+  <div class="row">
+    <div class="col border">Coluna 1</div>
+    <div class="col border">Coluna 2</div>
+    <div class="col border">Coluna 3</div>
+  </div>
+</div>
+
+. .container → centraliza e aplica padding.
+. .row → cria uma linha horizontal que vai comportar até 12 colunas.
+. .col → distribui automaticamente o espaço disponível entre as colunas irmãs.
+
+
+
+
+📏 Definindo larguras fixas (col-*):
+Você pode definir quantas colunas (das 12) cada elemento vai ocupar.
+
+Exemplo:
+
+<div class="row">
+  <div class="col-4 border">Coluna 1 (4/12)</div>
+  <div class="col-8 border">Coluna 2 (8/12)</div>
+</div>
+
+. .col-4 ocupa 4 colunas → 33,3% da largura.
+. .col-8 ocupa 8 colunas → 66,6% da largura.
+
+⚠️ Regra: a soma dos valores por linha deve ser ≤ 12. Se passar, as colunas “quebram” para uma nova linha.
+
+
+
+
+📱 Colunas responsivas (breakpoints):
+O Bootstrap permite que você controle o tamanho das colunas em diferentes tamanhos de tela.
+
+Classes disponíveis:
+. .col-sm-* → telas ≥ 576px (celulares grandes).
+. .col-md-* → telas ≥ 768px (tablets).
+. .col-lg-* → telas ≥ 992px (notebooks).
+. .col-xl-* → telas ≥ 1200px (desktops grandes).
+. .col-xxl-* → telas ≥ 1400px (monitores muito grandes).
+
+📌 Exemplo responsivo:
+<div class="row">
+  <div class="col-12 col-md-6 col-lg-4 border">Coluna 1</div>
+  <div class="col-12 col-md-6 col-lg-8 border">Coluna 2</div>
+</div>
+
+. Em telas pequenas → cada coluna ocupa 12/12 (linha inteira).
+. Em médias → cada uma ocupa 6/12 (metade da tela).
+. Em grandes → primeira ocupa 4/12 e a segunda 8/12.
+
+
+
+
+🎯 Alinhamento de colunas (vertical e horizontal):
+O alinhamento é feito com utilitários flexbox que o Bootstrap aplica em .row.
+
+🔹 Alinhamento vertical (por linha):
+. .align-items-start → colunas alinhadas ao topo.
+. .align-items-center → colunas alinhadas ao centro vertical.
+. .align-items-end → colunas alinhadas embaixo.
+
+📌 Exemplo:
+
+<div class="row align-items-center" style="height:200px;">
+  <div class="col border">Col A</div>
+  <div class="col border">Col B</div>
+  <div class="col border">Col C</div>
+</div>
+
+
+
+🔹 Alinhamento horizontal (por linha)
+. .justify-content-start → alinhado à esquerda.
+. .justify-content-center → centralizado.
+. .justify-content-end → alinhado à direita.
+. .justify-content-between → espaço entre os itens.
+. .justify-content-around → espaço igual ao redor.
+. .justify-content-evenly → espaço uniforme entre todos.
+
+📌 Exemplo:
+
+<div class="row justify-content-between">
+  <div class="col-3 border">Col 1</div>
+  <div class="col-3 border">Col 2</div>
+  <div class="col-3 border">Col 3</div>
+</div>
+
+
+
+🔸 Alinhamento individual: .align-self-*:
+
+Se você quiser alinhar apenas uma coluna específica (ou algumas) dentro da .row, use as classes .align-self-* aplicadas direto na coluna.
+. .align-self-start → alinha no topo.
+. .align-self-center → centraliza verticalmente.
+. .align-self-end → alinha embaixo.
+. .align-self-baseline → alinha pela linha de base do texto.
+. .align-self-stretch → ocupa toda a altura disponível.
+
+📌 Exemplo:
+
+<div class="row" style="height:200px;">
+  <div class="col border align-self-start">Topo</div>
+  <div class="col border align-self-center">Centro</div>
+  <div class="col border align-self-end">Inferior</div>
+</div>
+
+
+
+🔸 Ordem das colunas: .order-* ✅ (adicionado):
+O Bootstrap também permite inverter ou reordenar colunas sem mudar o HTML, apenas com classes. Isso funciona porque .row usa Flexbox, e .order-* altera a propriedade order.
+
+Classes disponíveis:
+. .order-1 até .order-5 → define a ordem numérica da coluna.
+. .order-first → força o item a vir primeiro.
+. .order-last → força o item a ir por último.
+
+📌 Exemplo básico:
+
+<div class="row">
+  <div class="col order-3 border">Coluna A</div>
+  <div class="col order-1 border">Coluna B</div>
+  <div class="col order-2 border">Coluna C</div>
+</div>
+
+Resultado: a ordem visual será B → C → A, mesmo que no HTML A esteja antes.
+
+
+
+📌 Responsivo (ordem muda em cada tamanho):
+
+<div class="row">
+  <div class="col-6 col-md-4 order-2 order-md-1 border">Coluna 1</div>
+  <div class="col-6 col-md-8 order-1 order-md-2 border">Coluna 2</div>
+</div>
+
+. Em telas pequenas → Coluna 2 vem antes.
+. Em telas médias+ → Coluna 1 vem antes.
+
+⚡ Importância: facilita layouts mobile-first (ex.: mostrar conteúdo principal antes da barra lateral no celular, mas inverter em telas grandes).
+
+
+
+
+🧩 Colunas automáticas e offset:
+
+Colunas automáticas:
+Se você não define número (col apenas), o Bootstrap divide igualmente o espaço entre as colunas irmãs.
+
+<div class="row">
+  <div class="col border">1</div>
+  <div class="col border">2</div>
+  <div class="col border">3</div>
+</div>
+
+Offsets (espaçamento à esquerda):
+Use .offset-* para empurrar colunas.
+
+<div class="row">
+  <div class="col-4 offset-2 border">Coluna deslocada</div>
+</div>
+
+
+
+📌 Colunas aninhadas:
+Você pode criar novas linhas e colunas dentro de uma coluna.
+
+<div class="row">
+  <div class="col border">
+    Coluna principal
+    <div class="row">
+      <div class="col-6 border">Sub-coluna 1</div>
+      <div class="col-6 border">Sub-coluna 2</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+📊 Resumindo:
+. Sempre comece com .container → .row → .col.
+. Há 12 colunas por linha.
+. Use .col-* para largura fixa.
+. Use breakpoints (col-sm, col-md, …) para responsividade.
+. .align-items-* e .justify-content-* → alinham toda a linha.
+. .align-self-* → alinha uma coluna específica.
+. .order-* → muda a ordem das colunas sem alterar o HTML (responsivo também).
+. .offset-* → cria espaçamentos.
+. Colunas podem ser aninhadas.
+
+
+-->
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewporWt" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+     
+
+    <div class="cont">
+
+        <div class="row justify-content-center align-items-start bg-primary m-2 p-2" style="height:  100px;">
+        <div class=" col bg-white bg-opacity-50 border">Coluna 1</div>
+        <div class=" col bg-white bg-opacity-50 border">Coluna 2</div>
+        <div class=" col bg-white bg-opacity-50 border">Coluna 3</div>
+        </div>
+
+        <div class="row align-items-end bg-primary m-2 p-2" style="height:  100px;">
+        <div class=" col  bg-white bg-opacity-50 border">Coluna 1</div>
+        <div class=" col bg-white bg-opacity-50 border">Coluna 2</div>
+        <div class=" col bg-white bg-opacity-50 border">Coluna 3</div>
+        </div>
+
+        <div class="row align-items-center bg-primary m-2 p-2" style="height:  100px;">
+        <div class=" col ordem-3 justify-content-start bg-white bg-opacity-50 border">Coluna 1</div>
+        <div class=" col ordem-2 bg-white bg-opacity-50 border">Coluna 2</div>
+        <div class=" col ordem-1 bg-white bg-opacity-50 border">Coluna 3</div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

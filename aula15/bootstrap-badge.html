@@ -1,0 +1,122 @@
+<!--
+🎖️ Aula 15 — Bootstrap Badge
+
+🔑 O que é um Badge?
+No Bootstrap, um badge é um pequeno marcador visual que serve para destacar informações curtas dentro da interface.
+É muito usado para mostrar quantidades, notificações, status ou novidades.
+
+Exemplos práticos:
+. Quantidade de itens em um carrinho.
+. Número de mensagens não lidas.
+. Indicar um novo recurso.
+
+
+
+🧩 Estrutura básica:
+Para criar um badge, você usa a classe .badge junto com uma classe de cor contextual (.bg-*).
+
+📌 Exemplo:
+<h1>Exemplo de Badge <span class="badge bg-secondary">Novo</span></h1>
+
+
+🔎 Explicação:
+. .badge → estilo base do badge (padding, borda arredondada, tipografia reduzida).
+. .bg-secondary → cor de fundo (pode ser qualquer classe de cor).
+. Usado geralmente dentro de títulos, botões, listas ou navegação.
+
+
+
+🎨 Cores disponíveis:
+
+Os badges usam as mesmas cores contextuais dos botões e alertas:
+. .bg-primary (azul)
+. .bg-secondary (cinza neutro)
+. .bg-success (verde, sucesso)
+. .bg-danger (vermelho, erro/risco)
+. .bg-warning (amarelo, aviso)
+. .bg-info (azul claro, informação)
+. .bg-light (fundo claro)
+. .bg-dark (preto/cinza escuro)
+
+📌 Exemplo:
+<span class="badge bg-primary">Primary</span>
+<span class="badge bg-success">Success</span>
+<span class="badge bg-danger">Danger</span>
+
+
+
+
+📏 Tamanhos e forma:
+Por padrão, os badges são inline (acompanham o texto). Mas você pode:
+
+🔹 Badge “pílula” (pill):
+Deixa o badge mais arredondado.
+html:
+<span class="badge rounded-pill bg-success">Pílula</span>
+
+
+Classe usada: .rounded-pill.:
+🔹 Badge dentro de botões
+html:
+Badges combinam muito bem com botões, para mostrar contadores.
+
+<button type="button" class="btn btn-primary">
+  Mensagens <span class="badge bg-light text-dark">4</span>
+</button>
+
+
+
+
+
+📌 Badge em listas e navegação:
+Você também pode usar badges para complementar listas e menus:
+
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Caixa de Entrada
+    <span class="badge bg-primary rounded-pill">14</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Notificações
+    <span class="badge bg-danger rounded-pill">3</span>
+  </li>
+</ul>
+
+
+🔎 Explicação:
+. d-flex justify-content-between → coloca o badge à direita.
+. rounded-pill → badge em formato de pílula.
+
+
+
+
+🛠️ Customizações úteis:
+. .text-* → alterar a cor do texto (.text-dark, .text-light).
+. .rounded / .rounded-pill → mudar bordas.
+. .fs-* → alterar tamanho da fonte do badge.
+. .position-absolute + utilitários → criar badges posicionados (ex.: notificação sobre ícone).
+
+📌 Exemplo badge de notificação em ícone:
+
+<button type="button" class="btn btn-primary position-relative">
+  <i class="bi bi-bell"></i>
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    5+
+    <span class="visually-hidden">notificações não lidas</span>
+  </span>
+</button>
+
+
+
+
+📊 Resumo dos pontos importantes:
+. .badge → classe base.
+. .bg-* → define a cor do badge.
+. .rounded-pill → deixa o badge oval.
+. Pode ser usado em títulos, botões, listas, navegação, ícones.
+. Aceita utilitários de tamanho, cor e posição.
+. Ótimo para contadores e indicadores de status.
+
+
+
+-->
