@@ -1,0 +1,154 @@
+<!--
+
+📑 Aula 19 — Paginação no Bootstrap:
+
+🔑 O que é paginação?
+A paginação é um componente usado para dividir grandes quantidades de conteúdo em várias páginas menores, exibindo links de navegação (Próxima, Anterior, números de página, etc).
+
+No Bootstrap, a paginação já vem pronta, estilizada e acessível (com suporte para leitores de tela).
+
+🧩 Estrutura básica
+<nav aria-label="Exemplo de paginação">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+  </ul>
+</nav>
+
+
+🔎 Explicação:
+. <nav aria-label="..."> → acessibilidade (define que é navegação de páginas).
+. .pagination → classe base que estiliza a lista de páginas.
+. .page-item → cada item da lista.
+. .page-link → o link em si (clicável).
+
+
+
+🎨 Estados dos botões:
+
+🔹 Ativo:
+Destaca a página atual.
+<li class="page-item active"><a class="page-link" href="#">2</a></li>
+
+
+🔹 Desabilitado:
+Para indicar que o botão não está disponível.
+
+<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Anterior</a></li>
+
+. .disabled → estilo “desativado”.
+. tabindex="-1" → evita que o usuário navegue para esse link via teclado.
+
+
+
+📏 Tamanhos:
+Você pode alterar o tamanho da paginação:
+
+<ul class="pagination pagination-lg">
+  <li class="page-item"><a class="page-link" href="#">1</a></li>
+  <li class="page-item"><a class="page-link" href="#">2</a></li>
+</ul>
+
+<ul class="pagination pagination-sm">
+  <li class="page-item"><a class="page-link" href="#">1</a></li>
+  <li class="page-item"><a class="page-link" href="#">2</a></li>
+</ul>
+
+. .pagination-lg → maior.
+. .pagination-sm → menor.
+
+
+
+📍 Alinhamento:
+Assim como outros componentes, você pode alinhar a paginação:
+
+- Centralizado 
+<ul class="pagination justify-content-center"> ... </ul>
+
+- À direita 
+<ul class="pagination justify-content-end"> ... </ul>
+
+⚡ Navegação com ícones:
+Você pode usar ícones ou caracteres especiais no lugar de texto:
+
+<ul class="pagination">
+  <li class="page-item">
+    <a class="page-link" href="#" aria-label="Anterior">
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+  </li>
+  <li class="page-item"><a class="page-link" href="#">1</a></li>
+  <li class="page-item"><a class="page-link" href="#">2</a></li>
+  <li class="page-item">
+    <a class="page-link" href="#" aria-label="Próximo">
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+  </li>
+</ul>
+
+
+🔎 Explicação:
+. &laquo; → « (seta dupla para esquerda).
+. &raquo; → » (seta dupla para direita).
+. aria-label → garante acessibilidade (mesmo com ícone, o leitor de tela “fala” Anterior ou Próximo).
+
+
+
+📊 Resumo dos pontos importantes:
+. .pagination → container da paginação.
+. .page-item → item da lista.
+. .page-link → link clicável.
+. .active → destaca a página atual.
+. .disabled → desabilita navegação.
+. .pagination-lg / .pagination-sm → muda tamanho.
+. justify-content-* → alinhamento (start, center, end).
+. Pode usar texto, números ou ícones.
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewporWt" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+  
+
+
+    <ul class="pagination">
+        <li class="page-item"><a href="" class="page-link">Anterior</a></li>
+        <li  class="page-item"><a href="" class="page-link">1</a></li>
+        <li  class="page-item"><a href="" class="page-link">2</a></li>
+         <li  class="page-item"><a href="" class="page-link">3</a></li>
+         <li  class="page-item"><a href="" class="page-link">4</a></li>
+          <li  class="page-item"><a href="" class="page-link">Proximo</a></li>
+    </ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

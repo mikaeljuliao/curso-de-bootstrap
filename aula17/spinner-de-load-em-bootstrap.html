@@ -1,0 +1,163 @@
+<!--
+
+
+
+
+🔄 Aula 17 — Spinner de Load no Bootstrap:
+
+🔑 O que é um Spinner?
+O Spinner é um indicador de carregamento usado para mostrar ao usuário que algo está sendo processado em segundo plano (ex.: carregamento de dados, envio de formulário, renderização de tela).
+
+No Bootstrap, os spinners são feitos apenas com HTML e CSS (sem imagens ou JS externo).
+
+
+
+
+🧩 Estrutura básica:
+Existem dois tipos principais de spinners no Bootstrap:
+
+1. 🔘 Spinner “Border” (círculo com borda)
+<div class="spinner-border" role="status">
+  <span class="visually-hidden">Carregando...</span>
+</div>
+
+🔎 Explicação:
+. .spinner-border → cria o círculo de borda giratória.
+. role="status" → acessibilidade.
+. <span class="visually-hidden">Carregando...</span> → descreve para leitores de tela (não aparece visualmente).
+
+
+
+2. ⚪ Spinner “Grow” (círculo pulsante):
+<div class="spinner-grow" role="status">
+  <span class="visually-hidden">Carregando...</span>
+</div>
+
+
+🔎 Diferença:
+. .spinner-grow → em vez de girar, cresce e desaparece.
+. Ideal para indicar carregamento de forma mais sutil.
+
+
+
+🎨 Cores dos spinners:
+Você pode aplicar cores contextuais com .text-*:
+
+<div class="spinner-border text-primary"></div>
+<div class="spinner-border text-success"></div>
+<div class="spinner-border text-danger"></div>
+<div class="spinner-border text-warning"></div>
+<div class="spinner-grow text-info"></div>
+
+🔎 Explicação:
+. .text-primary (azul), .text-success (verde), .text-danger (vermelho), etc.
+. Funciona tanto para border quanto grow.
+
+
+
+📐 Tamanho dos spinners:
+Três formas de mudar o tamanho:
+
+1. Classes prontas:
+. .spinner-border-sm → versão pequena.
+. .spinner-grow-sm → versão pequena do grow.
+
+<div class="spinner-border spinner-border-sm"></div>
+<div class="spinner-grow spinner-grow-sm"></div>
+
+
+
+2. CSS inline (width e height):
+<div class="spinner-border" style="width: 3rem; height: 3rem;"></div>
+<div class="spinner-grow" style="width: 2rem; height: 2rem;"></div>
+
+
+
+📍 Alinhamento e posicionamento:
+O spinner pode ser centralizado ou inserido dentro de elementos.
+
+
+📌 Centralizado na tela:
+<div class="d-flex justify-content-center">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Carregando...</span>
+  </div>
+</div>
+
+
+📌 Dentro de botões:
+<button class="btn btn-primary" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Carregando...
+</button>
+
+<button class="btn btn-success" type="button" disabled>
+  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+  Processando
+</button>
+
+
+
+⚡ Exemplo prático com botão interativo:
+📌 Mostrando e ocultando spinner via JavaScript:
+
+<button class="btn btn-primary" onclick="carregar()" id="btn">
+  Enviar
+</button>
+
+<div id="spinner" class="spinner-border text-primary d-none" role="status">
+  <span class="visually-hidden">Carregando...</span>
+</div>
+
+<script>
+function carregar() {
+  document.getElementById("btn").disabled = true;
+  document.getElementById("spinner").classList.remove("d-none");
+
+  setTimeout(() => {
+    document.getElementById("spinner").classList.add("d-none");
+    document.getElementById("btn").disabled = false;
+  }, 3000); // simula carregamento de 3s
+}
+</script>
+
+
+🔎 Explicação:
+. d-none → esconde o spinner inicialmente.
+. JS remove a classe para exibir durante a ação.
+. Após 3 segundos, volta ao normal.
+
+
+
+
+📊 Resumo dos pontos importantes:
+. .spinner-border → círculo giratório.
+. .spinner-grow → círculo pulsante.
+. .text-* → cores contextuais.
+. .spinner-border-sm / .spinner-grow-sm → versão pequena.
+. Pode ser redimensionado com width/height.
+. Pode ser usado sozinho, centralizado ou dentro de botões.
+. Funciona bem com JS para feedback de ações assíncronas.
+
+
+
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewporWt" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="spinner-border text-danger"> </div>
+    <div class="spinner-border text-primary"> </div>
+    <div class="spinner-border"> </div>
+    <div class="spinner-border"> </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
